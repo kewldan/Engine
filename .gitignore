@@ -30,5 +30,8 @@
 *.exe
 *.out
 *.app
-/lib
-/build
+*.lib
+*.pdb
+*.ilk
+lib/
+build/
