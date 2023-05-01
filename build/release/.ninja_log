@@ -1,0 +1,11 @@
+# ninja log v5
+23	697	7046468496149796	CMakeFiles/engine.dir/src/Input.cpp.obj	ec0811e9e20b64a
+36	2051	7046468509655634	CMakeFiles/engine.dir/src/Texture.cpp.obj	21e91c5f3f3be152
+2	2546	7046468514636782	CMakeFiles/engine.dir/src/Animation.cpp.obj	ed74d12e0d4cc6ee
+11	2620	7046468515368264	CMakeFiles/engine.dir/src/Camera.cpp.obj	403663a69d2d60a1
+30	2138	7046468510537344	CMakeFiles/engine.dir/src/File.cpp.obj	6ef662c842e4225
+50	2634	7046468515508502	CMakeFiles/engine.dir/src/Window.cpp.obj	9bedd9826edaa09d
+43	2702	7046468516189536	CMakeFiles/engine.dir/src/Shader.cpp.obj	89792ac1d4e58d63
+1	2511	7046476879094481	CMakeFiles/engine.dir/src/HUD.cpp.obj	3097642c0a0c5f29
+2511	2612	7046476879769654	engine.lib	85f4d8724d149826
+0	9	0	clean	3ac1ac369df1e668

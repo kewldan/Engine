@@ -1,0 +1,23 @@
+# ninja log v5
+59	4629	7046751598420561	CMakeFiles/engine.dir/src/Settings.cpp.obj	168a8c20e31ecefa
+18	1092	7046751563063847	CMakeFiles/engine.dir/src/Input.cpp.obj	e16cfd58a5b6d4ae
+26	2847	7046751580593825	CMakeFiles/engine.dir/src/File.cpp.obj	aa301f11061ae1ff
+68	2885	7046751580996446	CMakeFiles/engine.dir/src/Texture.cpp.obj	1f2402aca7011952
+2	2997	7046813596922219	CMakeFiles/engine.dir/src/Animation.cpp.obj	ccb45fefa57f89f
+12	3002	7046813596972261	CMakeFiles/engine.dir/src/Camera.cpp.obj	ef8feeec2720c322
+26	3034	7046813597287833	CMakeFiles/engine.dir/src/Window.cpp.obj	c1f88be57b51a2b4
+33	3025	7046813597217690	CMakeFiles/engine.dir/src/Shader.cpp.obj	7bbcd3912b5472d1
+2	2668	7046818181048031	CMakeFiles/engine.dir/src/HUD.cpp.obj	b6abec3a448c06e6
+2669	2823	7046818181872640	engine.lib	a8e27df5bb7446b7
+0	8	0	clean	3ac1ac369df1e668
+16	108	7046822023820926	CMakeFiles/engine.dir/src/Font.cpp.obj	2d522bb2e0ae3888
+45	776	7046822030480973	CMakeFiles/engine.dir/src/Input.cpp.obj	8ac430c261a31907
+30	2376	7046822046468791	CMakeFiles/engine.dir/src/File.cpp.obj	130ee03929e8b335
+62	2406	7046822046769936	CMakeFiles/engine.dir/src/Texture.cpp.obj	712c5a157abef78e
+1	2939	7046822052079833	CMakeFiles/engine.dir/src/Animation.cpp.obj	676c88f2eaa67bdc
+10	2957	7046822052270112	CMakeFiles/engine.dir/src/Camera.cpp.obj	7d325cea0efebb44
+68	2996	7046822052671763	CMakeFiles/engine.dir/src/Window.cpp.obj	74c541a0931f40f5
+38	3052	7046822053224602	CMakeFiles/engine.dir/src/Shader.cpp.obj	ae152fbca6f2add2
+22	3184	7046822054559952	CMakeFiles/engine.dir/src/HUD.cpp.obj	c557c3c8c42e260e
+54	3873	7046822061429253	CMakeFiles/engine.dir/src/Settings.cpp.obj	6df4fffb56c48078
+3873	4021	7046822062272318	engine.lib	221775a392b79876
