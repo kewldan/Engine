@@ -11,6 +11,7 @@ include_directories(
         "${LIBRARIES_PATH}/stb/include"
         "${LIBRARIES_PATH}/plog/include"
         "${LIBRARIES_PATH}/glfw/include"
+        "${LIBRARIES_PATH}/freetype/include"
         "${LIBRARIES_PATH}/glm/include"
         "${LIBRARIES_PATH}/bson"
         "${LIBRARIES_PATH}/zlib"
@@ -33,10 +34,3 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
 else()
     set(PREFIX d)
 endif ()
-
-
-add_custom_command(
-        TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_CURRENT_BINARY_DIR}/engine.lib
-        ${CMAKE_SOURCE_DIR}/lib/engine${PREFIX}.lib)

@@ -32,10 +32,5 @@ void Engine::HUD::destroy() {
 }
 
 void Engine::HUD::drawMenu(const char *text) {
-    unsigned long long i = 0;
-    float x = 0;
-    while(strlen(text + i) > 0){
-        x += std::max(ImGui::CalcTextSize(text + i).x, 80.f);
-        i += strlen(text + i) + 1;
-    }
+
 }

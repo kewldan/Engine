@@ -31,10 +31,10 @@ namespace Engine {
 
         int getAttribLocation(const char *name) const;
 
-        int loadShader(const char *path, int type, char bitshift, bool from_file);
+        int loadShader(const char *path, int type, char bitshift);
 
     public:
-        explicit Shader(const char *filename, bool from_file = false);
+        explicit Shader(const char *filename);
 
         ~Shader();
 

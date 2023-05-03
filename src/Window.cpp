@@ -25,7 +25,7 @@ Engine::Window::Window(int w, int h, const char *title) {
     const char *version = reinterpret_cast<const char *>(glGetString(GL_VERSION));
     PLOGI << "OpenGL: " << version;
 
-    glEnable(GL_DEPTH_TEST);
+    glDisable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
 }
 

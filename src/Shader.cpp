@@ -4,7 +4,7 @@
 #define SHADER_PART_GEOMETRY 2
 #define SHADER_PART_FRAGMENT 4
 
-Engine::Shader::Shader(const char *filename, bool from_file) : filename(filename) {
+Engine::Shader::Shader(const char *filename) : filename(filename) {
     ASSERT("Filename is nullptr", filename != nullptr);
     shaderParts = 0;
     program = glCreateProgram();
@@ -22,21 +22,39 @@ Engine::Shader::Shader(const char *filename, bool from_file) : filename(filename
     strcat_s(path, 64, filename);
     strcat_s(path, 64, ".vert");
 
-    if ((from_file && File::exists(path)) || (!from_file && File::resourceExists(path))) {
-        vertex = loadShader(path, GL_VERTEX_SHADER, SHADER_PART_VERTEX, from_file);
+#ifndef NDEBUG
+    if (Engine::File::exists(path)) {
+        vertex = loadShader(path, GL_VERTEX_SHADER, SHADER_PART_VERTEX);
     }
 
     path[strlen(path) - 5] = 0;
     strcat_s(path, 64, ".frag");
-    if ((from_file && File::exists(path)) || (!from_file && File::resourceExists(path))) {
-        fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT, from_file);
+    if (Engine::File::exists(path)) {
+        fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
     }
 
     path[strlen(path) - 5] = 0;
     strcat_s(path, 64, ".geom");
-    if ((from_file && File::exists(path)) || (!from_file && File::resourceExists(path))) {
-        geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY, from_file);
+    if (Engine::File::exists(path)) {
+        geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
     }
+#else
+    if (Engine::File::resourceExists(path)) {
+        vertex = loadShader(path, GL_VERTEX_SHADER, SHADER_PART_VERTEX);
+    }
+
+    path[strlen(path) - 5] = 0;
+    strcat_s(path, 64, ".frag");
+    if (Engine::File::resourceExists(path)) {
+        fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
+    }
+
+    path[strlen(path) - 5] = 0;
+    strcat_s(path, 64, ".geom");
+    if (Engine::File::resourceExists(path)) {
+        geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
+    }
+#endif
 
     glLinkProgram(program);
 
@@ -65,16 +83,16 @@ GLint Engine::Shader::getAttribLocation(const char *name) const {
     return value;
 }
 
-int Engine::Shader::loadShader(const char *path, int type, const char bitshift, bool from_file) {
+int Engine::Shader::loadShader(const char *path, int type, const char bitshift) {
     ASSERT("Path is nullptr", path != nullptr);
     int shader = glCreateShader(type);
     ASSERT("Shader invalid", shader > 0);
     const char *shader_source;
-    if(from_file){
+#ifndef NDEBUG
         shader_source = Engine::File::readString(path);
-    }else{
+#else
         shader_source = Engine::File::readResourceString(path);
-    }
+#endif
     glShaderSource(shader, 1, &shader_source, nullptr);
     glCompileShader(shader);
 

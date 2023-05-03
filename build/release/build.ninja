@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_engine: phony || CMakeFiles\engine.dir
 
 build CMakeFiles\engine.dir\src\Animation.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\Animation.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -59,7 +59,7 @@ build CMakeFiles\engine.dir\src\Animation.cpp.obj: CXX_COMPILER__engine_Release 
 
 build CMakeFiles\engine.dir\src\Camera.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\Camera.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -67,7 +67,7 @@ build CMakeFiles\engine.dir\src\Camera.cpp.obj: CXX_COMPILER__engine_Release E$:
 
 build CMakeFiles\engine.dir\src\File.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\File.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -75,7 +75,7 @@ build CMakeFiles\engine.dir\src\File.cpp.obj: CXX_COMPILER__engine_Release E$:\P
 
 build CMakeFiles\engine.dir\src\Font.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\Font.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -83,7 +83,7 @@ build CMakeFiles\engine.dir\src\Font.cpp.obj: CXX_COMPILER__engine_Release E$:\P
 
 build CMakeFiles\engine.dir\src\HUD.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\HUD.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -91,7 +91,7 @@ build CMakeFiles\engine.dir\src\HUD.cpp.obj: CXX_COMPILER__engine_Release E$:\Pr
 
 build CMakeFiles\engine.dir\src\Input.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\Input.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -99,7 +99,7 @@ build CMakeFiles\engine.dir\src\Input.cpp.obj: CXX_COMPILER__engine_Release E$:\
 
 build CMakeFiles\engine.dir\src\Settings.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\Settings.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -107,7 +107,7 @@ build CMakeFiles\engine.dir\src\Settings.cpp.obj: CXX_COMPILER__engine_Release E
 
 build CMakeFiles\engine.dir\src\Shader.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\Shader.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -115,7 +115,7 @@ build CMakeFiles\engine.dir\src\Shader.cpp.obj: CXX_COMPILER__engine_Release E$:
 
 build CMakeFiles\engine.dir\src\Texture.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\Texture.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -123,7 +123,7 @@ build CMakeFiles\engine.dir\src\Texture.cpp.obj: CXX_COMPILER__engine_Release E$
 
 build CMakeFiles\engine.dir\src\Window.cpp.obj: CXX_COMPILER__engine_Release E$:\Projects\libraries\engine\src\Window.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
@@ -141,7 +141,7 @@ build engine.lib: CXX_STATIC_LIBRARY_LINKER__engine_Release CMakeFiles\engine.di
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD
   LINK_FLAGS = /machine:x64
   OBJECT_DIR = CMakeFiles\engine.dir
-  POST_BUILD = cmd.exe /C "cd /D E:\Projects\libraries\engine\build\release && "C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" -E copy E:/Projects/libraries/engine/build/release/engine.lib E:/Projects/libraries/engine/lib/engine.lib"
+  POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
   TARGET_FILE = engine.lib

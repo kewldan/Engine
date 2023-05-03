@@ -12,13 +12,15 @@ namespace Engine {
     public:
         int width{}, height{}, nrChannels{};
 
-        explicit Texture(const char *filename, bool from_file = false);
+        explicit Texture(const char *filename);
 
         ~Texture();
 
         void nearest() const;
 
         void bind() const;
+
+        unsigned int getTexture() const;
 
         static unsigned char *loadImage(const char *path, int *w, int *h);
     };
