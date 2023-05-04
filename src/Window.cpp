@@ -52,7 +52,6 @@ void Engine::Window::setVsync(bool value) {
 
 bool Engine::Window::update() {
     glfwSwapBuffers(window);
-    glfwPollEvents();
 
     int lw = width, lh = height;
     glfwGetFramebufferSize(window, &width, &height);

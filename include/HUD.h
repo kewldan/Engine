@@ -17,8 +17,6 @@ namespace Engine {
 
         static void begin();
 
-        static void drawMenu(const char* text);
-
         static void end();
     };
 }

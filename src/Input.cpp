@@ -1,5 +1,7 @@
 #include "Input.h"
 
+Engine::Input* Engine::Input::instance = nullptr;
+
 void Engine::Input::hideCursor() {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
@@ -12,6 +14,12 @@ Engine::Input::Input(GLFWwindow *window) : window(window) {
     mousePressed = new bool[8];
     mouseJustPressed = new bool[8];
     mouseJustReleased = new bool[8];
+    dragging = false;
+    stopDragging = false;
+    startDragging = false;
+
+    memset(keyPressed, 0, 318);
+    memset(mousePressed, 0, 8);
 }
 
 void Engine::Input::showCursor() {
@@ -28,35 +36,29 @@ void Engine::Input::setCursorPosition(glm::vec2 position) {
     glfwSetCursorPos(window, position.x, position.y);
 }
 
-void Engine::Input::update() {
-    static double x, y;
-    glfwGetCursorPos(window, &x, &y);
-    cursorPosition.x = static_cast<float>(x);
-    cursorPosition.y = static_cast<float>(y);
+bool Engine::Input::update() {
+    memset(mouseJustPressed, 0, 8);
+    memset(mouseJustReleased, 0, 8);
 
-    for (int i = 0; i < 317; i++) {
-        bool now = glfwGetKey(window, i + 32);
-        if (now) {
-            keyJustReleased[i] = false;
-            keyJustPressed[i] = !keyPressed[i];
-        } else {
-            keyJustPressed[i] = false;
-            keyJustReleased[i] = keyPressed[i];
-        }
-        keyPressed[i] = now;
+    memset(keyJustPressed, 0, 318);
+    memset(keyJustReleased, 0, 318);
+
+    glfwPollEvents();
+
+    startDragging = false;
+    stopDragging = false;
+
+    if(isMouseButtonPressed(GLFW_MOUSE_BUTTON_LEFT) && isKeyPressed(GLFW_KEY_LEFT_SHIFT) && lastCursorPosition != cursorPosition && !dragging){
+        startDragging = true;
+        dragging = true;
+        draggingStartPosition = cursorPosition;
     }
 
-    for (int i = 0; i < 8; i++) {
-        bool now = glfwGetMouseButton(window, i);
-        if (now) {
-            mouseJustReleased[i] = false;
-            mouseJustPressed[i] = !mousePressed[i];
-        } else {
-            mouseJustPressed[i] = false;
-            mouseJustReleased[i] = mousePressed[i];
-        }
-        mousePressed[i] = now;
+    if((isMouseButtonJustReleased(GLFW_MOUSE_BUTTON_LEFT) || isKeyJustReleased(GLFW_KEY_LEFT_SHIFT)) && dragging){
+        dragging = false;
+        stopDragging = true;
     }
+    return true;
 }
 
 bool Engine::Input::isKeyPressed(int key) {
@@ -85,9 +87,64 @@ const char *Engine::Input::getClipboard() {
 }
 
 bool Engine::Input::isKeyJustReleased(int key) {
-    return key >= 32 && key < 349 && keyJustReleased[key];
+    return key >= 32 && key < 349 && keyJustReleased[key - 32];
 }
 
 bool Engine::Input::isMouseButtonJustReleased(int button) {
     return button >= 0 && button < 8 && mouseJustReleased[button];
+}
+
+bool Engine::Input::isDragging() const {
+    return dragging;
+}
+
+bool Engine::Input::isStartDragging() const {
+    return startDragging;
+}
+
+bool Engine::Input::isStopDragging() const {
+    return stopDragging;
+}
+
+glm::vec2 Engine::Input::getDraggingStartPosition() const {
+    return draggingStartPosition;
+}
+
+void Engine::Input::key_callback(int key, int action) {
+        if(action == GLFW_PRESS){
+            Engine::Input::instance->keyJustPressed[key] = !Engine::Input::instance->keyPressed[key];
+        }else{
+            Engine::Input::instance->keyJustReleased[key] = Engine::Input::instance->keyPressed[key];
+        }
+        Engine::Input::instance->keyPressed[key] = action == GLFW_PRESS;
+}
+
+void Engine::Input::mouse_callback(int button, int action) {
+    if(button >= 0 && button < 8) {
+        if(action == GLFW_PRESS){
+            Engine::Input::instance->mouseJustPressed[button] = !Engine::Input::instance->mousePressed[button];
+        }else{
+            Engine::Input::instance->mouseJustReleased[button] = Engine::Input::instance->mousePressed[button];
+        }
+        Engine::Input::instance->mousePressed[button] = action == GLFW_PRESS;
+    }
+}
+
+void Engine::Input::cursor_callback(float xpos, float ypos) {
+    Engine::Input::instance->lastCursorPosition = Engine::Input::instance->cursorPosition;
+    Engine::Input::instance->cursorPosition.x = (float) xpos;
+    Engine::Input::instance->cursorPosition.y = (float) ypos;
+}
+
+void Engine::Input::registerCallbacks() {
+    Engine::Input::instance = this;
+    glfwSetMouseButtonCallback(window, [](GLFWwindow *, int button, int action, int) {
+        mouse_callback(button, action);
+    });
+    glfwSetKeyCallback(window, [](GLFWwindow *, int key, int, int action, int) {
+        key_callback(key - 32, action);
+    });
+    glfwSetCursorPosCallback(window, [](GLFWwindow*, double xpos, double ypos){
+        cursor_callback((float) xpos, (float) ypos);
+    });
 }

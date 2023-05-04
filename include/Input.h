@@ -2,18 +2,29 @@
 
 #include "glm/ext.hpp"
 #include "Engine.h"
+#include "plog/Log.h"
 #include <GLFW/glfw3.h>
 
 namespace Engine {
     class Input {
     private:
+        static Input* instance;
         GLFWwindow *window;
         glm::vec2 cursorPosition{};
+        glm::vec2 lastCursorPosition{};
+        glm::vec2 draggingStartPosition{};
         bool *keyPressed, *mousePressed;
         bool *keyJustPressed, *mouseJustPressed;
         bool *keyJustReleased, *mouseJustReleased;
+        bool dragging, startDragging, stopDragging;
+
+        static void key_callback(int key, int action);
+        static void mouse_callback(int button, int action);
+        static void cursor_callback(float xpos, float ypos);
     public:
         explicit Input(GLFWwindow *window);
+
+        void registerCallbacks();
 
         void hideCursor();
 
@@ -23,7 +34,7 @@ namespace Engine {
 
         void setCursorPosition(glm::vec2 position);
 
-        void update();
+        bool update();
 
         bool isKeyPressed(int key);
 
@@ -38,6 +49,14 @@ namespace Engine {
         bool isMouseButtonJustReleased(int button);
 
         void setClipboard(const char* value);
+
+        bool isStartDragging() const;
+
+        bool isDragging() const;
+
+        bool isStopDragging() const;
+
+        glm::vec2 getDraggingStartPosition() const;
 
         const char* getClipboard();
     };
