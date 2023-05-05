@@ -8,7 +8,7 @@
 namespace Engine {
     class Input {
     private:
-        static Input* instance;
+        static Input *instance;
         GLFWwindow *window;
         glm::vec2 cursorPosition{};
         glm::vec2 lastCursorPosition{};
@@ -19,8 +19,11 @@ namespace Engine {
         bool dragging, startDragging, stopDragging;
 
         static void key_callback(int key, int action);
+
         static void mouse_callback(int button, int action);
+
         static void cursor_callback(float xpos, float ypos);
+
     public:
         explicit Input(GLFWwindow *window);
 
@@ -48,7 +51,7 @@ namespace Engine {
 
         bool isMouseButtonJustReleased(int button);
 
-        void setClipboard(const char* value);
+        void setClipboard(const char *value);
 
         bool isStartDragging() const;
 
@@ -58,6 +61,6 @@ namespace Engine {
 
         glm::vec2 getDraggingStartPosition() const;
 
-        const char* getClipboard();
+        const char *getClipboard();
     };
 }

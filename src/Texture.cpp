@@ -8,23 +8,25 @@ Engine::Texture::Texture(const char *filename) {
     bind();
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
     static char *f = new char[128];
     strcpy_s(f, 128, "data/textures/");
     strcat_s(f, 128, filename);
     unsigned char *data;
 #ifndef NDEBUG
-    data = stbi_load(f, &width, &height, &nrChannels, 4);
+    data = stbi_load(f, &width, &height, &nrChannels, 0);
 #else
     int size = 0;
     auto *raw = reinterpret_cast<unsigned char *>(Engine::File::readResourceFile(f, &size));
     data = stbi_load_from_memory(raw, size, &width, &height, &nrChannels, 0);
 #endif
     if (data) {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE,
+        glTexImage2D(GL_TEXTURE_2D, 0, nrChannels == 4 ? GL_RGBA : GL_RGB, width, height, 0,
+                     nrChannels == 4 ? GL_RGBA : GL_RGB, GL_UNSIGNED_BYTE,
                      data);
+        glGenerateMipmap(GL_TEXTURE_2D);
     } else {
         PLOGE << "Failed to load texture [" << filename << "]";
         PLOGE << stbi_failure_reason();

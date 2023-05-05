@@ -1,6 +1,6 @@
 #include "Input.h"
 
-Engine::Input* Engine::Input::instance = nullptr;
+Engine::Input *Engine::Input::instance = nullptr;
 
 void Engine::Input::hideCursor() {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -48,13 +48,14 @@ bool Engine::Input::update() {
     startDragging = false;
     stopDragging = false;
 
-    if(isMouseButtonPressed(GLFW_MOUSE_BUTTON_LEFT) && isKeyPressed(GLFW_KEY_LEFT_SHIFT) && lastCursorPosition != cursorPosition && !dragging){
+    if (isMouseButtonPressed(GLFW_MOUSE_BUTTON_LEFT) && isKeyPressed(GLFW_KEY_LEFT_SHIFT) &&
+        lastCursorPosition != cursorPosition && !dragging) {
         startDragging = true;
         dragging = true;
         draggingStartPosition = cursorPosition;
     }
 
-    if((isMouseButtonJustReleased(GLFW_MOUSE_BUTTON_LEFT) || isKeyJustReleased(GLFW_KEY_LEFT_SHIFT)) && dragging){
+    if ((isMouseButtonJustReleased(GLFW_MOUSE_BUTTON_LEFT) || isKeyJustReleased(GLFW_KEY_LEFT_SHIFT)) && dragging) {
         dragging = false;
         stopDragging = true;
     }
@@ -62,19 +63,23 @@ bool Engine::Input::update() {
 }
 
 bool Engine::Input::isKeyPressed(int key) {
-    return key >= 32 && key < 349 && keyPressed[key - 32];
+    ASSERT("Key is invalid", key > 31 && key < 349);
+    return keyPressed[key - 32];
 }
 
 bool Engine::Input::isKeyJustPressed(int key) {
-    return key >= 32 && key < 349 && keyJustPressed[key - 32];
+    ASSERT("Key is invalid", key > 31 && key < 349);
+    return keyJustPressed[key - 32];
 }
 
 bool Engine::Input::isMouseButtonPressed(int button) {
-    return button >= 0 && button < 8 && mousePressed[button];
+    ASSERT("Button is invalid", button >= 0 && button < 8);
+    return mousePressed[button];
 }
 
 bool Engine::Input::isMouseButtonJustPressed(int button) {
-    return button >= 0 && button < 8 && mouseJustPressed[button];
+    ASSERT("Button is invalid", button >= 0 && button < 8);
+    return mouseJustPressed[button];
 }
 
 void Engine::Input::setClipboard(const char *value) {
@@ -87,11 +92,13 @@ const char *Engine::Input::getClipboard() {
 }
 
 bool Engine::Input::isKeyJustReleased(int key) {
-    return key >= 32 && key < 349 && keyJustReleased[key - 32];
+    ASSERT("Key is invalid", key > 31 && key < 349);
+    return keyJustReleased[key - 32];
 }
 
 bool Engine::Input::isMouseButtonJustReleased(int button) {
-    return button >= 0 && button < 8 && mouseJustReleased[button];
+    ASSERT("Button is invalid", button >= 0 && button < 8);
+    return mouseJustReleased[button];
 }
 
 bool Engine::Input::isDragging() const {
@@ -111,22 +118,22 @@ glm::vec2 Engine::Input::getDraggingStartPosition() const {
 }
 
 void Engine::Input::key_callback(int key, int action) {
-        if(action == GLFW_PRESS){
-            Engine::Input::instance->keyJustPressed[key] = !Engine::Input::instance->keyPressed[key];
-        }else{
-            Engine::Input::instance->keyJustReleased[key] = Engine::Input::instance->keyPressed[key];
-        }
-        Engine::Input::instance->keyPressed[key] = action == GLFW_PRESS;
+    if (action != GLFW_RELEASE) {
+        Engine::Input::instance->keyJustPressed[key] = !Engine::Input::instance->keyPressed[key];
+    } else {
+        Engine::Input::instance->keyJustReleased[key] = Engine::Input::instance->keyPressed[key];
+    }
+    Engine::Input::instance->keyPressed[key] = action != GLFW_RELEASE;
 }
 
 void Engine::Input::mouse_callback(int button, int action) {
-    if(button >= 0 && button < 8) {
-        if(action == GLFW_PRESS){
+    if (button >= 0 && button < 8) {
+        if (action != GLFW_RELEASE) {
             Engine::Input::instance->mouseJustPressed[button] = !Engine::Input::instance->mousePressed[button];
-        }else{
+        } else {
             Engine::Input::instance->mouseJustReleased[button] = Engine::Input::instance->mousePressed[button];
         }
-        Engine::Input::instance->mousePressed[button] = action == GLFW_PRESS;
+        Engine::Input::instance->mousePressed[button] = action != GLFW_RELEASE;
     }
 }
 
@@ -144,7 +151,7 @@ void Engine::Input::registerCallbacks() {
     glfwSetKeyCallback(window, [](GLFWwindow *, int key, int, int action, int) {
         key_callback(key - 32, action);
     });
-    glfwSetCursorPosCallback(window, [](GLFWwindow*, double xpos, double ypos){
+    glfwSetCursorPosCallback(window, [](GLFWwindow *, double xpos, double ypos) {
         cursor_callback((float) xpos, (float) ypos);
     });
 }

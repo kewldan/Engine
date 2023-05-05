@@ -57,7 +57,15 @@ build CMakeFiles\engine.dir\src\Animation.cpp.obj: CXX_COMPILER__engine_Debug E$
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
   TARGET_PDB = engine.pdb
 
-build CMakeFiles\engine.dir\src\Camera.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Camera.cpp || cmake_object_order_depends_target_engine
+build CMakeFiles\engine.dir\src\Camera2D.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Camera2D.cpp || cmake_object_order_depends_target_engine
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
+  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+  OBJECT_DIR = CMakeFiles\engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
+  TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
+  TARGET_PDB = engine.pdb
+
+build CMakeFiles\engine.dir\src\Camera3D.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Camera3D.cpp || cmake_object_order_depends_target_engine
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
   INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
   OBJECT_DIR = CMakeFiles\engine.dir
@@ -137,7 +145,7 @@ build CMakeFiles\engine.dir\src\Window.cpp.obj: CXX_COMPILER__engine_Debug E$:\P
 #############################################
 # Link the static library engine.lib
 
-build engine.lib: CXX_STATIC_LIBRARY_LINKER__engine_Debug CMakeFiles\engine.dir\src\Animation.cpp.obj CMakeFiles\engine.dir\src\Camera.cpp.obj CMakeFiles\engine.dir\src\File.cpp.obj CMakeFiles\engine.dir\src\Font.cpp.obj CMakeFiles\engine.dir\src\HUD.cpp.obj CMakeFiles\engine.dir\src\Input.cpp.obj CMakeFiles\engine.dir\src\Settings.cpp.obj CMakeFiles\engine.dir\src\Shader.cpp.obj CMakeFiles\engine.dir\src\Texture.cpp.obj CMakeFiles\engine.dir\src\Window.cpp.obj
+build engine.lib: CXX_STATIC_LIBRARY_LINKER__engine_Debug CMakeFiles\engine.dir\src\Animation.cpp.obj CMakeFiles\engine.dir\src\Camera2D.cpp.obj CMakeFiles\engine.dir\src\Camera3D.cpp.obj CMakeFiles\engine.dir\src\File.cpp.obj CMakeFiles\engine.dir\src\Font.cpp.obj CMakeFiles\engine.dir\src\HUD.cpp.obj CMakeFiles\engine.dir\src\Input.cpp.obj CMakeFiles\engine.dir\src\Settings.cpp.obj CMakeFiles\engine.dir\src\Shader.cpp.obj CMakeFiles\engine.dir\src\Texture.cpp.obj CMakeFiles\engine.dir\src\Window.cpp.obj
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64
   OBJECT_DIR = CMakeFiles\engine.dir

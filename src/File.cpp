@@ -15,7 +15,7 @@ char *Engine::File::readFile(const char *path, int *size) {
     char *bin = new char[s];
     stream.read(bin, s);
     stream.close();
-    if(size != nullptr){
+    if (size != nullptr) {
         *size = s;
     }
     return bin;
@@ -106,7 +106,7 @@ unsigned char *Engine::File::compress(unsigned char *data, unsigned int length, 
     deflate(&defstream, Z_FINISH);
     deflateEnd(&defstream);
 
-    if(compressedLength != nullptr)
+    if (compressedLength != nullptr)
         *compressedLength = defstream.total_out;
 
     return deflated;
@@ -122,11 +122,11 @@ unsigned char *Engine::File::decompress(unsigned char *data, unsigned int length
     infstream.next_in = data;
     infstream.avail_in = length;
 
-    auto *inflated = (unsigned char*) malloc(128);
+    auto *inflated = (unsigned char *) malloc(128);
     infstream.next_out = inflated;
 
     inflateInit(&infstream);
-    for(int i = 0;;i++) {
+    for (int i = 0;; i++) {
         infstream.avail_out = 64;
         infstream.next_out = inflated + 64 * i;
         int err = inflate(&infstream, Z_SYNC_FLUSH);
@@ -136,7 +136,7 @@ unsigned char *Engine::File::decompress(unsigned char *data, unsigned int length
     inflateEnd(&infstream);
 
 
-    if(decompressedLength != nullptr)
+    if (decompressedLength != nullptr)
         *decompressedLength = infstream.total_out;
 
     return inflated;

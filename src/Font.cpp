@@ -49,12 +49,12 @@ char *Engine::Font::format(const char *fmt, ...) {
     return buf;
 }
 
-void Engine::Font::text(Engine::Camera *camera, float x, float y, const char *text, glm::vec4 color) {
+void Engine::Font::text(Engine::Camera2D *camera, float x, float y, const char *text, glm::vec4 color) {
     glBindVertexArray(VAO);
 
     shader->bind();
     shader->upload("color", color);
-    shader->upload("proj", camera->getOrthographic());
+    shader->upload("proj", camera->getProjection());
     glActiveTexture(GL_TEXTURE0);
     shader->upload("tex", 0);
     texture->bind();
@@ -67,7 +67,9 @@ void Engine::Font::text(Engine::Camera *camera, float x, float y, const char *te
             offsetX = x;
         } else if (Characters.contains(c)) {
             Character ch = Characters[c];
-            glm::mat4 mvp = glm::translate(glm::mat4(1), glm::vec3(offsetX + ch.offset.x * scale, offsetY + ch.offset.y * scale, -0.1f));
+            glm::mat4 mvp = glm::translate(glm::mat4(1),
+                                           glm::vec3(offsetX + ch.offset.x * scale, offsetY + ch.offset.y * scale,
+                                                     -0.1f));
             mvp = glm::scale(mvp, glm::vec3(ch.size * scale, 1));
             shader->upload("uv", ch.uv);
             shader->upload("size", ch.uvSize);

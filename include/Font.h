@@ -4,6 +4,7 @@
 #include "File.h"
 #include "Texture.h"
 #include "Shader.h"
+#include "Camera2D.h"
 #include <string>
 #include <sstream>
 #include <map>
@@ -20,16 +21,19 @@ namespace Engine {
 
     class Font {
     private:
-        Texture* texture;
+        Texture *texture;
         int fontSize, lineHeight;
         float scale;
         std::map<char, Character> Characters;
-        Engine::Shader* shader;
+        Engine::Shader *shader;
         unsigned int VAO;
     public:
-        explicit Font(unsigned int VAO, Engine::Shader* shader, const char* path);
-        static char* format(const char* fmt, ...);
-        void text(Engine::Camera* camera, float x, float y, const char* text, glm::vec4 color = glm::vec4(1));
+        explicit Font(unsigned int VAO, Engine::Shader *shader, const char *path);
+
+        static char *format(const char *fmt, ...);
+
+        void text(Engine::Camera2D *camera, float x, float y, const char *text, glm::vec4 color = glm::vec4(1));
+
         void setSize(int size);
     };
 }

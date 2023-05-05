@@ -27,8 +27,8 @@ namespace Engine {
 
         static bool resourceExists(const char *path);
 
-        static unsigned char* compress(unsigned char* data, unsigned int length, unsigned long* compressedLength);
+        static unsigned char *compress(unsigned char *data, unsigned int length, unsigned long *compressedLength);
 
-        static unsigned char* decompress(unsigned char* data, unsigned int length, unsigned long* decompressedLength);
+        static unsigned char *decompress(unsigned char *data, unsigned int length, unsigned long *decompressedLength);
     };
 }

@@ -11,3 +11,15 @@
 2895	2984	7047453821709034	engine.lib	7612603f0826b770
 0	8	0	clean	3ac1ac369df1e668
 18	2693	7047453818866259	CMakeFiles/engine.dir/src/Font.cpp.obj	2d522bb2e0ae3888
+55	1597	7050288052677669	CMakeFiles/engine.dir/src/Input.cpp.obj	4b9e1877e33f0813
+61	2505	7050288061770906	CMakeFiles/engine.dir/src/Texture.cpp.obj	b147d7f4c2286cdb
+23	2583	7050288062545737	CMakeFiles/engine.dir/src/File.cpp.obj	c0a2261cf1851b6a
+29	3115	7050288067836139	CMakeFiles/engine.dir/src/Camera3D.cpp.obj	969f61e3906377fc
+67	3151	7050288068191517	CMakeFiles/engine.dir/src/Window.cpp.obj	fe177d2976e68cb
+10	3156	7050288068271889	CMakeFiles/engine.dir/src/Animation.cpp.obj	779805a38da9d7d9
+1	3158	7050288068251883	CMakeFiles/engine.dir/src/Camera2D.cpp.obj	81dd9258e23a935f
+17	3173	7050288068446592	CMakeFiles/engine.dir/src/Font.cpp.obj	1a80b8bfd8dd7fe9
+36	3180	7050288068521667	CMakeFiles/engine.dir/src/Shader.cpp.obj	77d83130f24959c5
+48	3427	7050288070986829	CMakeFiles/engine.dir/src/HUD.cpp.obj	663f908d6a2ff058
+42	4077	7050288077471913	CMakeFiles/engine.dir/src/Settings.cpp.obj	bdedfcecb991570a
+4077	4170	7050288078297900	engine.lib	8458583c3713f729

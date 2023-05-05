@@ -39,21 +39,21 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
         geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
     }
 #else
-    if (Engine::File::resourceExists(path)) {
-        vertex = loadShader(path, GL_VERTEX_SHADER, SHADER_PART_VERTEX);
-    }
+        if (Engine::File::resourceExists(path)) {
+            vertex = loadShader(path, GL_VERTEX_SHADER, SHADER_PART_VERTEX);
+        }
 
-    path[strlen(path) - 5] = 0;
-    strcat_s(path, 64, ".frag");
-    if (Engine::File::resourceExists(path)) {
-        fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
-    }
+        path[strlen(path) - 5] = 0;
+        strcat_s(path, 64, ".frag");
+        if (Engine::File::resourceExists(path)) {
+            fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
+        }
 
-    path[strlen(path) - 5] = 0;
-    strcat_s(path, 64, ".geom");
-    if (Engine::File::resourceExists(path)) {
-        geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
-    }
+        path[strlen(path) - 5] = 0;
+        strcat_s(path, 64, ".geom");
+        if (Engine::File::resourceExists(path)) {
+            geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
+        }
 #endif
 
     glLinkProgram(program);
@@ -89,9 +89,9 @@ int Engine::Shader::loadShader(const char *path, int type, const char bitshift) 
     ASSERT("Shader invalid", shader > 0);
     const char *shader_source;
 #ifndef NDEBUG
-        shader_source = Engine::File::readString(path);
+    shader_source = Engine::File::readString(path);
 #else
-        shader_source = Engine::File::readResourceString(path);
+    shader_source = Engine::File::readResourceString(path);
 #endif
     glShaderSource(shader, 1, &shader_source, nullptr);
     glCompileShader(shader);
