@@ -24,6 +24,7 @@ namespace Engine {
     private:
         GLFWwindow *window;
         bool resized{};
+        bool vsync;
     public:
         int width, height;
 
@@ -35,9 +36,7 @@ namespace Engine {
 
         ~Window();
 
-        static void setVsync(bool value);
-
-        static void enableBlending();
+        void setVsync(bool value);
 
         void setTitle(const char *title);
 

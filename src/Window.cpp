@@ -47,7 +47,10 @@ Engine::Window::~Window() {
 }
 
 void Engine::Window::setVsync(bool value) {
-    glfwSwapInterval(value);
+    if(value != vsync){
+        vsync = value;
+        glfwSwapInterval(vsync);
+    }
 }
 
 bool Engine::Window::update() {

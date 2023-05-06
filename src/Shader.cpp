@@ -17,7 +17,7 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
     fragment = -1;
     blockIndex = 0;
 
-    char *path = new char[64];
+    static char *path = new char[64];
     strcpy_s(path, 64, "data/shaders/");
     strcat_s(path, 64, filename);
     strcat_s(path, 64, ".vert");
@@ -55,6 +55,7 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
             geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
         }
 #endif
+    path[strlen(path) - 5] = 0;
 
     glLinkProgram(program);
 
@@ -67,7 +68,6 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
               << ((shaderParts & SHADER_PART_FRAGMENT) != 0 ? 'F' : '\0')
               << ']';
     }
-    delete[] path;
 }
 
 GLuint Engine::Shader::getProgramId() const {
