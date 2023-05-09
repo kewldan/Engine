@@ -13,6 +13,7 @@ namespace Engine {
         glm::vec2 cursorPosition{};
         glm::vec2 lastCursorPosition{};
         glm::vec2 draggingStartPosition{};
+        glm::vec2 scrollDelta{};
         bool *keyPressed, *mousePressed;
         bool *keyJustPressed, *mouseJustPressed;
         bool *keyJustReleased, *mouseJustReleased;
@@ -24,6 +25,8 @@ namespace Engine {
 
         static void cursor_callback(float xpos, float ypos);
 
+        static void mouse_scroll_callback(float x, float y);
+
     public:
         explicit Input(GLFWwindow *window);
 
@@ -33,7 +36,7 @@ namespace Engine {
 
         void showCursor();
 
-        glm::vec2 getCursorPosition();
+        glm::vec2 &getCursorPosition();
 
         void setCursorPosition(glm::vec2 position);
 
@@ -59,7 +62,9 @@ namespace Engine {
 
         bool isStopDragging() const;
 
-        glm::vec2 getDraggingStartPosition() const;
+        glm::vec2 &getDraggingStartPosition();
+
+        glm::vec2 &getMouseWheelDelta();
 
         const char *getClipboard();
     };

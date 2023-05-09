@@ -12,17 +12,12 @@
 # =============================================================================
 
 #############################################
-# localized /showIncludes string
-
-msvc_deps_prefix = Примечание: включение файла:  
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__engine_Release
-  deps = msvc
-  command = C:\PROGRA~1\MICROS~2\2022\COMMUN~1\VC\Tools\MSVC\1435~1.322\bin\Hostx86\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -30,7 +25,7 @@ rule CXX_COMPILER__engine_Release
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__engine_Release
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~1\MICROS~2\2022\COMMUN~1\VC\Tools\MSVC\1435~1.322\bin\Hostx86\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
+  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\JetBrains\CLion 2023.1.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\ranlib.exe $TARGET_FILE && $POST_BUILD"
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -47,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SE:\Projects\libraries\engine -BE:\Projects\libraries\engine\build\release
+  command = "C:\Program Files\JetBrains\CLion 2023.1.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\libraries\engine -BC:\libraries\engine\build\release
   description = Re-running CMake...
   generator = 1
 
@@ -56,7 +51,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = "C:\Program Files\JetBrains\CLion 2023.1.1\bin\ninja\win\x64\ninja.exe" $FILE_ARG -t clean $TARGETS
+  command = "C:\Program Files\JetBrains\CLion 2023.1.2\bin\ninja\win\x64\ninja.exe" $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -64,6 +59,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = "C:\Program Files\JetBrains\CLion 2023.1.1\bin\ninja\win\x64\ninja.exe" -t targets
+  command = "C:\Program Files\JetBrains\CLion 2023.1.2\bin\ninja\win\x64\ninja.exe" -t targets
   description = All primary targets available:
 

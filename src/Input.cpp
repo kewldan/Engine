@@ -26,7 +26,7 @@ void Engine::Input::showCursor() {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 }
 
-glm::vec2 Engine::Input::getCursorPosition() {
+glm::vec2 &Engine::Input::getCursorPosition() {
     return cursorPosition;
 }
 
@@ -42,6 +42,8 @@ bool Engine::Input::update() {
 
     memset(keyJustPressed, 0, 318);
     memset(keyJustReleased, 0, 318);
+
+    scrollDelta = glm::vec2(0);
 
     glfwPollEvents();
 
@@ -113,7 +115,7 @@ bool Engine::Input::isStopDragging() const {
     return stopDragging;
 }
 
-glm::vec2 Engine::Input::getDraggingStartPosition() const {
+glm::vec2 &Engine::Input::getDraggingStartPosition() {
     return draggingStartPosition;
 }
 
@@ -154,4 +156,16 @@ void Engine::Input::registerCallbacks() {
     glfwSetCursorPosCallback(window, [](GLFWwindow *, double xpos, double ypos) {
         cursor_callback((float) xpos, (float) ypos);
     });
+    glfwSetScrollCallback(window, [](GLFWwindow *, double xOffset, double yOffset) {
+        mouse_scroll_callback((float) xOffset, (float) yOffset);
+    });
+}
+
+void Engine::Input::mouse_scroll_callback(float x, float y) {
+    Engine::Input::instance->scrollDelta.x = x;
+    Engine::Input::instance->scrollDelta.y = y;
+}
+
+glm::vec2 &Engine::Input::getMouseWheelDelta() {
+    return scrollDelta;
 }

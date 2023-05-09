@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 project(engine)
 
 set(CMAKE_CXX_STANDARD 20)
-set(LIBRARIES_PATH "E:/Projects/libraries")
+set(LIBRARIES_PATH "C:/libraries")
 set(GLAD_PATH "${LIBRARIES_PATH}/glad/release")
 include(${LIBRARIES_PATH}/imgui/import.cmake)
 

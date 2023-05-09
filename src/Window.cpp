@@ -10,14 +10,13 @@ Engine::Window::Window(int w, int h, const char *title) {
 
     window = glfwCreateWindow(w, h, title, nullptr, nullptr);
     if (!window) {
-        PLOG_FATAL << "[INTERNAL] Window can not be initialized";
+        PLOG_FATAL << "Window can not be initialized";
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
     glfwMakeContextCurrent(window);
 
     gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-    PLOGI << "[INTERNAL] GLAD loaded";
 
     const char *renderer = reinterpret_cast<const char *>(glGetString(GL_RENDERER));
     PLOGI << "Renderer: " << renderer;
@@ -42,12 +41,11 @@ GLFWwindow *Engine::Window::getId() {
 }
 
 Engine::Window::~Window() {
-    PLOGW << "Window was destroyed";
     glfwDestroyWindow(window);
 }
 
 void Engine::Window::setVsync(bool value) {
-    if(value != vsync){
+    if (value != vsync) {
         vsync = value;
         glfwSwapInterval(vsync);
     }
@@ -84,12 +82,10 @@ void Engine::Window::init() {
     plog::init(plog::debug, "latest.log");
     plog::get()->addAppender(new plog::ColorConsoleAppender<plog::FuncMessageFormatter>());
 #endif
-    PLOGI << "<< LOADING LIBRARIES >>";
     PLOGI << "ImGui version: " << ImGui::GetVersion();
     PLOGI << "Glfw version: " << glfwGetVersionString();
     PLOGI << "Build: " << __TIME__ << " " << __DATE__;
 
-    PLOGI << "[INTERNAL] GLFW initialized";
     glfwSetErrorCallback(Engine::error_callback);
     if (!glfwInit())
         exit(EXIT_FAILURE);

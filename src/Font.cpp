@@ -42,10 +42,10 @@ Engine::Font::Font(unsigned int VAO, Engine::Shader *shader, const char *path) :
 char *Engine::Font::format(const char *fmt, ...) {
     static char *buf = new char[1024];
     va_list args;
-            va_start(args, fmt);
+    va_start(args, fmt);
     vsnprintf(buf, 1024, fmt, args);
     buf[1023] = 0;
-            va_end(args);
+    va_end(args);
     return buf;
 }
 
