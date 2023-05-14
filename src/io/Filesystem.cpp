@@ -1,6 +1,6 @@
-#include "File.h"
+#include "IO/Filesystem.h"
 
-char *Engine::File::readFile(const char *path, int *size) {
+char *Engine::Filesystem::readFile(const char *path, int *size) {
     ASSERT("Path is nullptr", path != nullptr);
     std::ifstream stream(path, std::ios::out | std::ios::binary);
     if (!stream) {
@@ -21,7 +21,7 @@ char *Engine::File::readFile(const char *path, int *size) {
     return bin;
 }
 
-bool Engine::File::writeFile(const char *path, const char *data, unsigned int size) {
+bool Engine::Filesystem::writeFile(const char *path, const char *data, unsigned int size) {
     ASSERT("Path is nullptr", path != nullptr);
     ASSERT("Data is nullptr", data != nullptr);
     ASSERT("Size must be >0", size > 0);
@@ -31,11 +31,11 @@ bool Engine::File::writeFile(const char *path, const char *data, unsigned int si
     return stream.good();
 }
 
-bool Engine::File::exists(const char *path) {
+bool Engine::Filesystem::exists(const char *path) {
     return std::filesystem::exists(path);
 }
 
-char *Engine::File::readString(const char *path) {
+char *Engine::Filesystem::readString(const char *path) {
     std::ifstream stream(path, std::ios::out | std::ios::binary);
     if (!stream) {
         PLOGW << "The requested string [" << path << "] does not exist";
@@ -50,11 +50,11 @@ char *Engine::File::readString(const char *path) {
     return bin;
 }
 
-bool Engine::File::writeString(const char *path, const char *data) {
-    return File::writeFile(path, data, strlen(data));
+bool Engine::Filesystem::writeString(const char *path, const char *data) {
+    return Filesystem::writeFile(path, data, strlen(data));
 }
 
-char *Engine::File::readResourceFile(const char *path, int *size) {
+char *Engine::Filesystem::readResourceFile(const char *path, int *size) {
     ASSERT("Path is nullptr", path != nullptr);
     auto myResource = ::FindResource(nullptr, path, RT_RCDATA);
     if (!myResource) {
@@ -67,7 +67,7 @@ char *Engine::File::readResourceFile(const char *path, int *size) {
     return static_cast<char *>(::LockResource(myResourceData));
 }
 
-char *Engine::File::readResourceString(const char *path) {
+char *Engine::Filesystem::readResourceString(const char *path) {
     ASSERT("Path is nullptr", path != nullptr);
     auto myResource = ::FindResource(nullptr, path, RT_RCDATA);
     if (!myResource) {
@@ -84,11 +84,11 @@ char *Engine::File::readResourceString(const char *path) {
     return str;
 }
 
-bool Engine::File::resourceExists(const char *path) {
+bool Engine::Filesystem::resourceExists(const char *path) {
     return ::FindResource(nullptr, path, RT_RCDATA);
 }
 
-unsigned char *Engine::File::compress(unsigned char *data, unsigned int length, unsigned long *compressedLength) {
+unsigned char *Engine::Filesystem::compress(unsigned char *data, unsigned int length, unsigned long *compressedLength) {
     ASSERT("Data is nullptr", data != nullptr);
     ASSERT("Length must be >0", length > 0);
     auto *deflated = new unsigned char[length];
@@ -112,7 +112,7 @@ unsigned char *Engine::File::compress(unsigned char *data, unsigned int length, 
     return deflated;
 }
 
-unsigned char *Engine::File::decompress(unsigned char *data, unsigned int length, unsigned long *decompressedLength) {
+unsigned char *Engine::Filesystem::decompress(unsigned char *data, unsigned int length, unsigned long *decompressedLength) {
 
     z_stream infstream;
     infstream.zalloc = Z_NULL;

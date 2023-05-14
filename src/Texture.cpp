@@ -50,7 +50,7 @@ void Engine::Texture::bind() const {
 
 unsigned char *Engine::Texture::loadImage(const char *path, int *w, int *h) {
     int size = 0;
-    auto *raw = reinterpret_cast<unsigned char *>(Engine::File::readResourceFile(path, &size));
+    auto *raw = reinterpret_cast<unsigned char *>(Engine::Filesystem::readResourceFile(path, &size));
     return stbi_load_from_memory(raw, size, w, h, nullptr, 4);
 }
 

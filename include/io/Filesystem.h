@@ -9,7 +9,7 @@
 #include "zlib.h"
 
 namespace Engine {
-    class File {
+    class Filesystem {
     public:
         static char *readFile(const char *path, int *size = nullptr);
 

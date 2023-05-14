@@ -15,12 +15,12 @@ Engine::Settings::Settings(const char *name) {
 
 void Engine::Settings::save() {
     std::vector<uint8_t> data = nlohmann::json::to_bson(json);
-    Engine::File::writeFile(path, reinterpret_cast<const char *>(data.data()), data.size());
+    Engine::Filesystem::writeFile(path, reinterpret_cast<const char *>(data.data()), data.size());
 }
 
 void Engine::Settings::load() {
     int size = 0;
-    const char *data = Engine::File::readFile(path, &size);
+    const char *data = Engine::Filesystem::readFile(path, &size);
     std::vector<uint8_t> v;
     for (int i = 0; i < size; i++) {
         v.push_back(data[i]);
@@ -29,7 +29,7 @@ void Engine::Settings::load() {
 }
 
 bool Engine::Settings::exists() {
-    return Engine::File::exists(path);
+    return Engine::Filesystem::exists(path);
 }
 
 template<class T>

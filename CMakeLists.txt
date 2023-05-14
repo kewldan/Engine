@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 project(engine)
 
 set(CMAKE_CXX_STANDARD 20)
-set(LIBRARIES_PATH "C:/libraries")
+set(LIBRARIES_PATH "E:/Projects/libraries")
 set(GLAD_PATH "${LIBRARIES_PATH}/glad/release")
 include(${LIBRARIES_PATH}/imgui/import.cmake)
 
@@ -21,6 +21,8 @@ include_directories(
 
 file(GLOB SRCS
         "include/*.h" "src/*.cpp"
+        "include/io/*.h" "src/io/*.cpp"
+        "include/network/*.h" "src/network/*.cpp"
 )
 
 add_library(

@@ -6,7 +6,7 @@
 namespace Engine {
     class Camera3D {
     private:
-        glm::mat4 projection{}, view{};
+        glm::mat4 projection{}, view{}, viewRotation{};
         Engine::Animation *fov;
     public:
         Engine::Window *window;
@@ -16,6 +16,8 @@ namespace Engine {
         explicit Camera3D(Engine::Window *window);
 
         glm::mat4 &getView();
+
+        glm::mat4 &getViewRotation();
 
         glm::mat4 &getProjection();
 

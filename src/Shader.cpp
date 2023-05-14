@@ -23,19 +23,19 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
     strcat_s(path, 64, ".vert");
 
 #ifndef NDEBUG
-    if (Engine::File::exists(path)) {
+    if (Engine::Filesystem::exists(path)) {
         vertex = loadShader(path, GL_VERTEX_SHADER, SHADER_PART_VERTEX);
     }
 
     path[strlen(path) - 5] = 0;
     strcat_s(path, 64, ".frag");
-    if (Engine::File::exists(path)) {
+    if (Engine::Filesystem::exists(path)) {
         fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
     }
 
     path[strlen(path) - 5] = 0;
     strcat_s(path, 64, ".geom");
-    if (Engine::File::exists(path)) {
+    if (Engine::Filesystem::exists(path)) {
         geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
     }
 #else
@@ -89,7 +89,7 @@ int Engine::Shader::loadShader(const char *path, int type, const char bitshift) 
     ASSERT("Shader invalid", shader > 0);
     const char *shader_source;
 #ifndef NDEBUG
-    shader_source = Engine::File::readString(path);
+    shader_source = Engine::Filesystem::readString(path);
 #else
     shader_source = Engine::File::readResourceString(path);
 #endif

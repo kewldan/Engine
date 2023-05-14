@@ -7,7 +7,7 @@ Engine::Font::Font(unsigned int VAO, Engine::Shader *shader, const char *path) :
 
     scale = 1.f;
 
-    const char *fnt = Engine::File::readString("data/fonts/font.fnt");
+    const char *fnt = Engine::Filesystem::readString("data/fonts/font.fnt");
 
     const char *info_ptr = strstr(fnt, "info ");
     fontSize = strtol(strstr(info_ptr, "size=") + 5, nullptr, 10);
