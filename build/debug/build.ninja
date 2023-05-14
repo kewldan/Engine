@@ -32,14 +32,14 @@ CONFIGURATION = Debug
 #############################################
 # Include rules file.
 
-include CMakeFiles\rules.ninja
+include CMakeFiles/rules.ninja
 
 # =============================================================================
 
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = E$:\Projects\libraries\engine\build\debug\
+cmake_ninja_workdir = E$:/Projects/libraries/engine/build/debug/
 # =============================================================================
 # Object build statements for STATIC_LIBRARY target engine
 
@@ -47,135 +47,151 @@ cmake_ninja_workdir = E$:\Projects\libraries\engine\build\debug\
 #############################################
 # Order-only phony target for engine
 
-build cmake_object_order_depends_target_engine: phony || CMakeFiles\engine.dir
+build cmake_object_order_depends_target_engine: phony || CMakeFiles/engine.dir
 
-build CMakeFiles\engine.dir\src\Animation.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Animation.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/Animation.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/Animation.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\Animation.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\Camera2D.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Camera2D.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/Camera2D.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/Camera2D.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\Camera2D.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\Camera3D.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Camera3D.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/Camera3D.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/Camera3D.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\Camera3D.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\Font.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Font.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/Font.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/Font.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\Font.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\HUD.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\HUD.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/HUD.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/HUD.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\HUD.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\Input.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Input.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/Input.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/Input.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\Input.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\RenderTarget.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\RenderTarget.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/RenderTarget.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/RenderTarget.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\RenderTarget.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\Settings.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Settings.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/Settings.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/Settings.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\Settings.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\Shader.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Shader.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/Shader.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/Shader.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\Shader.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\Texture.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Texture.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/Texture.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/Texture.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\Texture.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\Window.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\Window.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/Window.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/Window.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\Window.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\io\Filesystem.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\io\Filesystem.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/io/Filesystem.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/io/Filesystem.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\io\Filesystem.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src\io
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\network\Buffer.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\network\Buffer.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/network/Buffer.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/network/Buffer.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\network\Buffer.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src\network
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\network\LEB128.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\network\LEB128.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/network/LEB128.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/network/LEB128.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\network\LEB128.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src\network
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\network\SocketClient.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\network\SocketClient.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/network/SocketClient.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/network/SocketClient.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\network\SocketClient.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src\network
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
-build CMakeFiles\engine.dir\src\network\SocketServer.cpp.obj: CXX_COMPILER__engine_Debug E$:\Projects\libraries\engine\src\network\SocketServer.cpp || cmake_object_order_depends_target_engine
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++20
-  INCLUDES = -IE:\Projects\libraries\glad\release\include -IE:\Projects\libraries\stb\include -IE:\Projects\libraries\plog\include -IE:\Projects\libraries\glfw\include -IE:\Projects\libraries\freetype\include -IE:\Projects\libraries\glm\include -IE:\Projects\libraries\bson -IE:\Projects\libraries\zlib -IE:\Projects\libraries\imgui -IE:\Projects\libraries\engine\include
+build CMakeFiles/engine.dir/src/network/SocketServer.cpp.obj: CXX_COMPILER__engine_Debug E$:/Projects/libraries/engine/src/network/SocketServer.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = CMakeFiles\engine.dir\src\network\SocketServer.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IE:/Projects/libraries/glad/release/include -IE:/Projects/libraries/stb/include -IE:/Projects/libraries/plog/include -IE:/Projects/libraries/glfw/include -IE:/Projects/libraries/freetype/include -IE:/Projects/libraries/glm/include -IE:/Projects/libraries/bson -IE:/Projects/libraries/zlib -IE:/Projects/libraries/imgui -IE:/Projects/libraries/engine/include
   OBJECT_DIR = CMakeFiles\engine.dir
   OBJECT_FILE_DIR = CMakeFiles\engine.dir\src\network
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine.pdb
+  TARGET_PDB = libengine.pdb
 
 
 # =============================================================================
@@ -183,45 +199,44 @@ build CMakeFiles\engine.dir\src\network\SocketServer.cpp.obj: CXX_COMPILER__engi
 
 
 #############################################
-# Link the static library engine.lib
+# Link the static library libengine.a
 
-build engine.lib: CXX_STATIC_LIBRARY_LINKER__engine_Debug CMakeFiles\engine.dir\src\Animation.cpp.obj CMakeFiles\engine.dir\src\Camera2D.cpp.obj CMakeFiles\engine.dir\src\Camera3D.cpp.obj CMakeFiles\engine.dir\src\Font.cpp.obj CMakeFiles\engine.dir\src\HUD.cpp.obj CMakeFiles\engine.dir\src\Input.cpp.obj CMakeFiles\engine.dir\src\RenderTarget.cpp.obj CMakeFiles\engine.dir\src\Settings.cpp.obj CMakeFiles\engine.dir\src\Shader.cpp.obj CMakeFiles\engine.dir\src\Texture.cpp.obj CMakeFiles\engine.dir\src\Window.cpp.obj CMakeFiles\engine.dir\src\io\Filesystem.cpp.obj CMakeFiles\engine.dir\src\network\Buffer.cpp.obj CMakeFiles\engine.dir\src\network\LEB128.cpp.obj CMakeFiles\engine.dir\src\network\SocketClient.cpp.obj CMakeFiles\engine.dir\src\network\SocketServer.cpp.obj
-  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
-  LINK_FLAGS = /machine:x64
+build libengine.a: CXX_STATIC_LIBRARY_LINKER__engine_Debug CMakeFiles/engine.dir/src/Animation.cpp.obj CMakeFiles/engine.dir/src/Camera2D.cpp.obj CMakeFiles/engine.dir/src/Camera3D.cpp.obj CMakeFiles/engine.dir/src/Font.cpp.obj CMakeFiles/engine.dir/src/HUD.cpp.obj CMakeFiles/engine.dir/src/Input.cpp.obj CMakeFiles/engine.dir/src/RenderTarget.cpp.obj CMakeFiles/engine.dir/src/Settings.cpp.obj CMakeFiles/engine.dir/src/Shader.cpp.obj CMakeFiles/engine.dir/src/Texture.cpp.obj CMakeFiles/engine.dir/src/Window.cpp.obj CMakeFiles/engine.dir/src/io/Filesystem.cpp.obj CMakeFiles/engine.dir/src/network/Buffer.cpp.obj CMakeFiles/engine.dir/src/network/LEB128.cpp.obj CMakeFiles/engine.dir/src/network/SocketClient.cpp.obj CMakeFiles/engine.dir/src/network/SocketServer.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\engine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_COMPILE_PDB = CMakeFiles\engine.dir\engine.pdb
-  TARGET_FILE = engine.lib
-  TARGET_PDB = engine.pdb
+  TARGET_FILE = libengine.a
+  TARGET_PDB = libengine.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
-build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
   COMMAND = cmd.exe /C "cd /D E:\Projects\libraries\engine\build\debug && "C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build edit_cache: phony CMakeFiles\edit_cache.util
+build edit_cache: phony CMakeFiles/edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
   COMMAND = cmd.exe /C "cd /D E:\Projects\libraries\engine\build\debug && "C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SE:\Projects\libraries\engine -BE:\Projects\libraries\engine\build\debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build rebuild_cache: phony CMakeFiles\rebuild_cache.util
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Target aliases.
 
-build engine: phony engine.lib
+build engine: phony libengine.a
 
 # =============================================================================
 # Folder targets.
@@ -231,7 +246,7 @@ build engine: phony engine.lib
 #############################################
 # Folder: E:/Projects/libraries/engine/build/debug
 
-build all: phony engine.lib
+build all: phony libengine.a
 
 # =============================================================================
 # Built-in targets
@@ -240,14 +255,14 @@ build all: phony engine.lib
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeRCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\3.25.2\CMakeCCompiler.cmake CMakeFiles\3.25.2\CMakeCXXCompiler.cmake CMakeFiles\3.25.2\CMakeRCCompiler.cmake CMakeFiles\3.25.2\CMakeSystem.cmake E$:\Projects\libraries\engine\CMakeLists.txt E$:\Projects\libraries\imgui\import.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCCompilerABI.c C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCompileFeatures.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeParseLibraryArchitecture.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystem.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeTestCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/LCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Tasking-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake E$:/Projects/libraries/engine/CMakeLists.txt E$:/Projects/libraries/imgui/import.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeRCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.1.1\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\3.25.2\CMakeCCompiler.cmake CMakeFiles\3.25.2\CMakeCXXCompiler.cmake CMakeFiles\3.25.2\CMakeRCCompiler.cmake CMakeFiles\3.25.2\CMakeSystem.cmake E$:\Projects\libraries\engine\CMakeLists.txt E$:\Projects\libraries\imgui\import.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCCompilerABI.c C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCompileFeatures.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeParseLibraryArchitecture.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystem.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeTestCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/LCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Tasking-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake E$:/Projects/libraries/engine/CMakeLists.txt E$:/Projects/libraries/imgui/import.cmake: phony
 
 
 #############################################

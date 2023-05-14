@@ -2,10 +2,9 @@
 
 Engine::Settings::Settings(const char *name) {
     path = new char[128];
-    auto *b = new wchar_t[128];
+    static auto *b = new wchar_t[128];
     SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, nullptr, &b);
-    _bstr_t appData(b);
-    strcpy_s(path, 128, appData);
+    wsprintfA(path, "%ls", b);
     strcat_s(path, 128, "\\");
     strcat_s(path, 128, name);
     std::filesystem::create_directories(path);

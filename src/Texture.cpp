@@ -19,7 +19,7 @@ Engine::Texture::Texture(const char *filename) {
     data = stbi_load(f, &width, &height, &nrChannels, 0);
 #else
     int size = 0;
-    auto *raw = reinterpret_cast<unsigned char *>(Engine::File::readResourceFile(f, &size));
+    auto *raw = reinterpret_cast<unsigned char *>(Engine::Filesystem::readResourceFile(f, &size));
     data = stbi_load_from_memory(raw, size, &width, &height, &nrChannels, 0);
 #endif
     if (data) {
