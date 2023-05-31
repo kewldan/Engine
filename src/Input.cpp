@@ -141,8 +141,8 @@ void Engine::Input::mouse_callback(int button, int action) {
 
 void Engine::Input::cursor_callback(float xpos, float ypos) {
     Engine::Input::instance->lastCursorPosition = Engine::Input::instance->cursorPosition;
-    Engine::Input::instance->cursorPosition.x = (float) xpos;
-    Engine::Input::instance->cursorPosition.y = (float) ypos;
+    Engine::Input::instance->cursorPosition.x = xpos;
+    Engine::Input::instance->cursorPosition.y = ypos;
 }
 
 void Engine::Input::registerCallbacks() {
@@ -168,4 +168,12 @@ void Engine::Input::mouse_scroll_callback(float x, float y) {
 
 glm::vec2 &Engine::Input::getMouseWheelDelta() {
     return scrollDelta;
+}
+
+bool Engine::Input::isSupportRawMode() {
+    return glfwRawMouseMotionSupported();
+}
+
+void Engine::Input::setRawMode(bool value) {
+    glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, value ? GLFW_TRUE : GLFW_FALSE);
 }

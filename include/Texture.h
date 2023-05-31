@@ -20,7 +20,7 @@ namespace Engine {
 
         void bind() const;
 
-        unsigned int getTexture() const;
+        [[nodiscard]] unsigned int getTexture() const;
 
         static unsigned char *loadImage(const char *path, int *w, int *h);
     };

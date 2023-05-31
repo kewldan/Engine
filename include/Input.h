@@ -56,11 +56,15 @@ namespace Engine {
 
         void setClipboard(const char *value);
 
-        bool isStartDragging() const;
+        static bool isSupportRawMode();
 
-        bool isDragging() const;
+        void setRawMode(bool value);
 
-        bool isStopDragging() const;
+        [[nodiscard]] bool isStartDragging() const;
+
+        [[nodiscard]] bool isDragging() const;
+
+        [[nodiscard]] bool isStopDragging() const;
 
         glm::vec2 &getDraggingStartPosition();
 

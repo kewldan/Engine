@@ -1,6 +1,9 @@
 #include "Window.h"
 
 Engine::Window::Window(int w, int h, const char *title) {
+    ASSERT("Window width is below than 0", w > 0);
+    ASSERT("Window height is below than 0", h > 0);
+    ASSERT("Window title is nullptr", title != nullptr);
     width = w;
     height = h;
 
@@ -29,6 +32,7 @@ Engine::Window::Window(int w, int h, const char *title) {
 }
 
 void Engine::Window::setTitle(const char *title) {
+    ASSERT("Window title is nullptr", title != nullptr);
     glfwSetWindowTitle(window, title);
 }
 

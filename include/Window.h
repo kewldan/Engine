@@ -24,7 +24,7 @@ namespace Engine {
     private:
         GLFWwindow *window;
         bool resized{};
-        bool vsync;
+        bool vsync{};
     public:
         int width, height;
 
