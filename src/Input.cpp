@@ -150,7 +150,7 @@ void Engine::Input::registerCallbacks() {
     glfwSetMouseButtonCallback(window, [](GLFWwindow *, int button, int action, int) {
         mouse_callback(button, action);
     });
-    glfwSetKeyCallback(window, [](GLFWwindow *, int key, int, int action, int) {
+    glfwSetKeyCallback(window, [](GLFWwindow *, int key, int, int action, int scancode) {
         key_callback(key - 32, action);
     });
     glfwSetCursorPosCallback(window, [](GLFWwindow *, double xpos, double ypos) {

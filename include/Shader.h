@@ -22,6 +22,7 @@ namespace Engine {
     typedef std::unordered_map<const char *, int> Uniforms;
 
     class Shader {
+    private:
         unsigned int vertex, fragment, geometry, program, blockIndex;
         Uniforms *uniforms;
         int8_t shaderParts;

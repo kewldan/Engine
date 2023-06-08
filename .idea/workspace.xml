@@ -23,59 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35497021-a1db-4a24-ac6e-73fced32eb24" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeRCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeRCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/3.25.2/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/debug/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeRCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeRCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/3.25.2/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/clion-Release-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/clion-Release-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/release/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/release/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/release/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Camera2D.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Camera2D.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Font.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/include/HUD.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/HUD.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Input.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Input.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Settings.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Settings.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Texture.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Texture.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Window.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/network/LEB128.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/network/LEB128.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/network/SocketClient.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/network/SocketServer.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Font.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Shader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HUD.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/HUD.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Input.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/SocketClient.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/SocketServer.cpp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,16 +69,11 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CPPToolchains&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager" selected="CMake Application.engine">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="engine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="engine" TARGET_NAME="engine" CONFIG_NAME="Release">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -156,6 +104,16 @@
       <workItem from="1684869151960" duration="600000" />
       <workItem from="1684869886604" duration="259000" />
       <workItem from="1685567696582" duration="1639000" />
+      <workItem from="1685623654531" duration="2036000" />
+      <workItem from="1685635499535" duration="1024000" />
+      <workItem from="1685661890172" duration="114000" />
+      <workItem from="1685732893227" duration="735000" />
+      <workItem from="1685827880343" duration="28000" />
+      <workItem from="1685877968083" duration="62000" />
+      <workItem from="1685888886623" duration="2376000" />
+      <workItem from="1685896437635" duration="145000" />
+      <workItem from="1686031679222" duration="4000" />
+      <workItem from="1686032455834" duration="607000" />
     </task>
     <servers />
   </component>
