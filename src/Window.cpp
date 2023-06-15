@@ -4,6 +4,7 @@ Engine::Window::Window(int w, int h, const char *title) {
     ASSERT("Window width is below than 0", w > 0);
     ASSERT("Window height is below than 0", h > 0);
     ASSERT("Window title is nullptr", title != nullptr);
+    CHECK_DATA
     width = w;
     height = h;
 

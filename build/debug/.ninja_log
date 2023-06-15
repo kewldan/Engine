@@ -1,4 +1,24 @@
 # ninja log v5
-2878	3133	7057257972573279	engine.lib	c622254e99c58ed9
+18013	18100	7085406230072412	CMakeFiles/engine.dir/thirdparty/imcmd_fuzzy_search.cpp.obj	808bc384085e0f14
 0	8	0	clean	3ac1ac369df1e668
-8156	9307	7057901695495033	libengine.a	73a77498a9621e76
+2	5476	7085406103760614	CMakeFiles/engine.dir/src/Animation.cpp.obj	14178f487e44740f
+5521	9332	7085406142367608	CMakeFiles/engine.dir/src/Texture.cpp.obj	2d5f9543eb87f622
+9	5490	7085406103851725	CMakeFiles/engine.dir/src/Camera2D.cpp.obj	a7dc7322e9ece615
+33	5521	7085406103992988	CMakeFiles/engine.dir/src/Camera3D.cpp.obj	6a5d3884bbc394e2
+15448	18781	7085406236860130	CMakeFiles/engine.dir/src/io/Filesystem.cpp.obj	32292eaf0df09bb6
+7827	14533	7085406194314859	CMakeFiles/engine.dir/src/Settings.cpp.obj	51203ff026eb057a
+5480	7826	7085406127308215	CMakeFiles/engine.dir/src/Input.cpp.obj	52ed29784810631f
+3	6480	7085408644640716	CMakeFiles/engine.dir/src/HUD.cpp.obj	441c9de652561081
+9333	13829	7085406187332485	CMakeFiles/engine.dir/src/Shader.cpp.obj	92f36ba87ce45b2b
+11005	15448	7085406203511989	CMakeFiles/engine.dir/src/RenderTarget.cpp.obj	a113c34ea2d7efc
+13830	15903	7085406208079540	CMakeFiles/engine.dir/src/network/Buffer.cpp.obj	a20bf8786460c442
+15904	17337	7085406222437879	CMakeFiles/engine.dir/thirdparty/imcmd_command_palette.cpp.obj	4d3ebe8ce0abf5c0
+17337	18013	7085406229185188	CMakeFiles/engine.dir/src/network/LEB128.cpp.obj	388b8fff5774f8ec
+14534	18879	7085406237838346	CMakeFiles/engine.dir/src/Window.cpp.obj	b859c644d077af4e
+4	164	7085441769684873	engined.lib	44c8a7dd92c21bb6
+3	165	7085442376342197	engined.lib	b3272c4776bc3a6a
+10	2575	7085663367986998	CMakeFiles/engine.dir/src/network/Buffer.cpp.obj	a20bf8786460c442
+2576	3545	7085663377853027	CMakeFiles/engine.dir/src/network/LEB128.cpp.obj	388b8fff5774f8ec
+15	4045	7085663382811891	CMakeFiles/engine.dir/src/io/Filesystem.cpp.obj	32292eaf0df09bb6
+4	5199	7085663394359219	CMakeFiles/engine.dir/src/HUD.cpp.obj	441c9de652561081
+5199	5416	7085663395521810	engined.lib	b3272c4776bc3a6a

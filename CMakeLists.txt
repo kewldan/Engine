@@ -2,34 +2,25 @@ cmake_minimum_required(VERSION 3.25)
 project(engine)
 
 set(CMAKE_CXX_STANDARD 20)
-set(GLAD_PATH "${LIBRARIES_PATH}/glad/release")
-set(VCPKG_LIBRARIES_PATH ${VCPKG_INSTALLED_DIR}/x64-windows-static)
 
-include_directories(${VCPKG_LIBRARIES_PATH}/include)
+include(Import.cmake)
 
-include_directories(
-        "${GLAD_PATH}/include"
-        "${LIBRARIES_PATH}/plog/include"
-        "${LIBRARIES_PATH}/glfw/include"
-        "${LIBRARIES_PATH}/freetype/include"
-        "${LIBRARIES_PATH}/bson"
-        "${PROJECT_SOURCE_DIR}/include"
-)
-
-file(GLOB SRCS
-        "include/*.h" "src/*.cpp"
-        "include/io/*.h" "src/io/*.cpp"
-        "include/network/*.h" "src/network/*.cpp"
-)
-
-if (CMAKE_BUILD_TYPE STREQUAL "Release")
-    set(PREFIX )
-else()
-    set(PREFIX d)
-endif ()
+set(CMAKE_DEBUG_POSTFIX d)
 
 add_library(
-        ${PROJECT_NAME}${PREFIX}
+        ${PROJECT_NAME}
         STATIC
-        ${SRCS}
+        ${ENGINE_SRCS}
 )
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy "engined.lib" "${PROJECT_SOURCE_DIR}/lib/engined.lib"
+            COMMAND_EXPAND_LISTS
+            )
+else ()
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy "engine.lib" "${PROJECT_SOURCE_DIR}/lib/engine.lib"
+            COMMAND_EXPAND_LISTS
+            )
+endif ()

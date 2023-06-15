@@ -85,7 +85,7 @@ char *Engine::Filesystem::readResourceString(const char *path) {
 }
 
 bool Engine::Filesystem::resourceExists(const char *path) {
-    return ::FindResource(nullptr, path, RT_RCDATA);
+    return ::FindResourceA(nullptr, path, RT_RCDATA);
 }
 
 unsigned char *Engine::Filesystem::compress(unsigned char *data, unsigned int length, unsigned long *compressedLength) {
@@ -112,7 +112,8 @@ unsigned char *Engine::Filesystem::compress(unsigned char *data, unsigned int le
     return deflated;
 }
 
-unsigned char *Engine::Filesystem::decompress(unsigned char *data, unsigned int length, unsigned long *decompressedLength) {
+unsigned char *
+Engine::Filesystem::decompress(unsigned char *data, unsigned int length, unsigned long *decompressedLength) {
 
     z_stream infstream;
     infstream.zalloc = Z_NULL;
@@ -140,4 +141,8 @@ unsigned char *Engine::Filesystem::decompress(unsigned char *data, unsigned int 
         *decompressedLength = infstream.total_out;
 
     return inflated;
+}
+
+std::filesystem::path Engine::Filesystem::getWorkingPath() {
+    return std::filesystem::current_path();
 }

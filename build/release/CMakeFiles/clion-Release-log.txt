@@ -1,4 +1,4 @@
-C:\Users\kewld\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=C:/Users/kewld/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/ninja/win/x64/ninja.exe -DCMAKE_TOOLCHAIN_FILE=E:/vcpkg/scripts/buildsystems/vcpkg.cmake -G Ninja -S C:\Users\kewldan\Desktop\engine -B C:\Users\kewldan\Desktop\engine\build\release
+"C:\Program Files\JetBrains\CLion 2023.1.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.1.2/bin/ninja/win/x64/ninja.exe" -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -G Ninja -S C:\workspace\Engine -B C:\workspace\Engine\build\release
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/kewldan/Desktop/engine/build/release
+-- Build files have been written to: C:/workspace/Engine/build/release

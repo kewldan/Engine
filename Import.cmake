@@ -19,13 +19,13 @@ endif ()
 set(ENGINE_DIR ${CMAKE_CURRENT_LIST_DIR})
 
 include_directories(
-        "${ENGINE_DIR}/include"
+        ${ENGINE_DIR}/include
+        ${ENGINE_DIR}/thirdparty
 )
-
-# Test commewnt
 
 file(GLOB ENGINE_SRCS
         "${ENGINE_DIR}/include/*.h" "${ENGINE_DIR}/src/*.cpp"
         "${ENGINE_DIR}/include/io/*.h" "${ENGINE_DIR}/src/io/*.cpp"
         "${ENGINE_DIR}/include/network/*.h" "${ENGINE_DIR}/src/network/*.cpp"
+        "${ENGINE_DIR}/thirdparty/*.h" "${ENGINE_DIR}/thirdparty/*.cpp"
         )

@@ -10,7 +10,7 @@ void Engine::HUD::end() {
     ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(43.f / 255.f, 43.f / 255.f, 43.f / 255.f, 100.f / 255.f));
     ImGui::RenderNotifications();
     ImGui::PopStyleColor(1);
-    if(show_command_palette) {
+    if (show_command_palette) {
         ImCmd::CommandPaletteWindow("CommandPalette", &show_command_palette);
     }
     ImGui::Render();
@@ -41,10 +41,17 @@ void Engine::HUD::init(Engine::Window *window) {
     };
     select_theme_cmd.SubsequentCallback = [&](int selected_option) {
         switch (selected_option) {
-            case 0: ImGui::StyleColorsClassic(); break;
-            case 1: ImGui::StyleColorsDark(); break;
-            case 2: ImGui::StyleColorsLight(); break;
-            default: break;
+            case 0:
+                ImGui::StyleColorsClassic();
+                break;
+            case 1:
+                ImGui::StyleColorsDark();
+                break;
+            case 2:
+                ImGui::StyleColorsLight();
+                break;
+            default:
+                break;
         }
     };
     ImCmd::AddCommand(std::move(select_theme_cmd));
@@ -55,4 +62,4 @@ void Engine::HUD::destroy() {
     ImGui_ImplGlfw_Shutdown();
 }
 
-bool Engine::HUD::show_command_palette = true;
+bool Engine::HUD::show_command_palette = false;
