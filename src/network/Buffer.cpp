@@ -69,3 +69,5 @@ void Engine::Buffer::writeLong(long v) {
     memcpy(buffer + index, &v, sizeof(v));
     index += sizeof(v);
 }
+
+Engine::Buffer::~Buffer() = default;

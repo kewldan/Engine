@@ -15,6 +15,7 @@ namespace Engine {
         glm::vec3 position{};
 
         explicit Camera2D(Window *window);
+        ~Camera2D();
 
         void update();
 
@@ -26,8 +27,8 @@ namespace Engine {
 
         void setProjectionDistance(float z_near, float z_far);
 
-        const glm::mat4 &getView() const;
+        [[nodiscard]] const glm::mat4 &getView() const;
 
-        const glm::mat4 &getProjection() const;
+        [[nodiscard]] const glm::mat4 &getProjection() const;
     };
 }

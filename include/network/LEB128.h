@@ -29,7 +29,7 @@ namespace Engine {
 
         int getSize();
 
-        int getValue() const;
+        [[nodiscard]] int getValue() const;
 
         void setValue(int val);
     };

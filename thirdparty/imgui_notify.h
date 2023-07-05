@@ -10,8 +10,8 @@
 #include <vector>
 #include <string>
 #include "font_awesome_5.h"
-#include "fa_solid_900.h"
 #include "imgui.h"
+#include "io/Filesystem.h"
 
 #define NOTIFY_MAX_MSG_LENGTH            4096        // Max message content length
 #define NOTIFY_PADDING_X                20.f        // Bottom-left X padding
@@ -155,7 +155,6 @@ public:
         } else {
             return ImGuiToastPhase_FadeIn;
         }
-        return ImGuiToastPhase_Expired;
     }
 
     NOTIFY_INLINE auto get_fade_percent() const -> const float {
@@ -319,8 +318,15 @@ namespace ImGui {
         icons_config.PixelSnapH = true;
         icons_config.FontDataOwnedByAtlas = FontDataOwnedByAtlas;
 
-        GetIO().Fonts->AddFontFromMemoryTTF((void *) fa_solid_900, sizeof(fa_solid_900), font_size, &icons_config,
+#ifndef NDEBUG
+        GetIO().Fonts->AddFontFromFileTTF("data/fonts/fa.ttf", font_size, &icons_config,
                                             icons_ranges);
+#else
+        int size;
+        auto* bin = static_cast<void*>(Engine::Filesystem::readResourceFile("data/fonts/fa.ttf", &size));
+        GetIO().Fonts->AddFontFromMemoryTTF(bin, size, font_size, &icons_config,
+                                          icons_ranges);
+#endif
     }
 }
 

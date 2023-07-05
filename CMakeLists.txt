@@ -11,7 +11,7 @@ add_library(
         ${PROJECT_NAME}
         STATIC
         ${ENGINE_SRCS}
-)
+        include/Serializable.h)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

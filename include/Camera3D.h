@@ -14,6 +14,7 @@ namespace Engine {
         glm::vec2 rotation{};
 
         explicit Camera3D(Engine::Window *window);
+        ~Camera3D();
 
         glm::mat4 &getView();
 

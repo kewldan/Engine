@@ -30,3 +30,7 @@ void Engine::Camera3D::setFov(float hFov) {
 glm::mat4 &Engine::Camera3D::getViewRotation() {
     return viewRotation;
 }
+
+Engine::Camera3D::~Camera3D() {
+    delete fov;
+}

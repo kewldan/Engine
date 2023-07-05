@@ -41,3 +41,7 @@ void Engine::Camera2D::setZoom(float newZoom) {
 void Engine::Camera2D::zoomIn(float factor) {
     zoom->start(zoom->getTargetValue() + factor);
 }
+
+Engine::Camera2D::~Camera2D() {
+    delete zoom;
+}

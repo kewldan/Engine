@@ -11,12 +11,13 @@ namespace Engine {
         int index{};
     public:
         explicit Buffer(int length);
+        ~Buffer();
 
         void clear();
 
         char *get();
 
-        int getIndex() const;
+        [[nodiscard]] int getIndex() const;
 
         int getSendBufferSize();
 

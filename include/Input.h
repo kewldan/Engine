@@ -29,6 +29,7 @@ namespace Engine {
 
     public:
         explicit Input(GLFWwindow *window);
+        ~Input();
 
         void registerCallbacks();
 

@@ -177,3 +177,14 @@ bool Engine::Input::isSupportRawMode() {
 void Engine::Input::setRawMode(bool value) {
     glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, value ? GLFW_TRUE : GLFW_FALSE);
 }
+
+Engine::Input::~Input() {
+    delete keyPressed;
+    delete mousePressed;
+
+    delete keyJustPressed;
+    delete mouseJustPressed;
+
+    delete keyJustReleased;
+    delete mouseJustReleased;
+}
