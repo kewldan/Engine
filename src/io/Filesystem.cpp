@@ -1,4 +1,4 @@
-#include "IO/Filesystem.h"
+#include "io/Filesystem.h"
 
 char *Engine::Filesystem::readFile(const char *path, int *size) {
     ASSERT("Path is nullptr", path != nullptr);

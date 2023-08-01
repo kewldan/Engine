@@ -1,26 +1,25 @@
 cmake_minimum_required(VERSION 3.25)
-project(engine)
+project(Engine)
 
 set(CMAKE_CXX_STANDARD 20)
 
-include(Import.cmake)
+find_package(glfw3 CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
+find_package(Stb REQUIRED)
+find_package(ZLIB REQUIRED)
 
-set(CMAKE_DEBUG_POSTFIX d)
+include_directories(
+        include
+        thirdparty
+)
+
+file(GLOB_RECURSE SRCS ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/thirdparty/*.cpp)
 
 add_library(
-        ${PROJECT_NAME}
+        Engine
         STATIC
-        ${ENGINE_SRCS}
-        include/Serializable.h)
+        ${SRCS}
+)
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy "engined.lib" "${PROJECT_SOURCE_DIR}/lib/engined.lib"
-            COMMAND_EXPAND_LISTS
-            )
-else ()
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy "engine.lib" "${PROJECT_SOURCE_DIR}/lib/engine.lib"
-            COMMAND_EXPAND_LISTS
-            )
-endif ()
+target_include_directories(Engine PRIVATE ${Stb_INCLUDE_DIR})
