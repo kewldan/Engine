@@ -1,4 +1,7 @@
 #include "Window.h"
+#include "stb_image.h"
+#include "Engine.h"
+#include "io/Filesystem.h"
 
 Engine::Window::Window(int w, int h, const char *title) {
     ASSERT("Window width is below than 0", w > 0);

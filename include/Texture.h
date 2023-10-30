@@ -3,8 +3,6 @@
 #include "Windows.h"
 #include "glad/glad.h"
 #include "plog/Log.h"
-#include "io/Filesystem.h"
-#include "stb_image.h"
 
 namespace Engine {
     class Texture {

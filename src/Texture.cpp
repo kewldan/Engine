@@ -1,5 +1,9 @@
 #include "Texture.h"
 
+#include "io/Filesystem.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 Engine::Texture::Texture(const char *filename) {
     ASSERT("Name is nullptr", filename != nullptr);
     glGenTextures(1, &texture);

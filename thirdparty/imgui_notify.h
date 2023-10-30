@@ -9,7 +9,7 @@
 #include <Windows.h>
 #include <vector>
 #include <string>
-#include "font_awesome_5.h"
+#include "IconsFontAwesome6.h"
 #include "imgui.h"
 #include "io/Filesystem.h"
 
@@ -127,13 +127,13 @@ public:
             case ImGuiToastType_None:
                 return nullptr;
             case ImGuiToastType_Success:
-                return ICON_FA_CHECK_CIRCLE;
+                return ICON_FA_CIRCLE_CHECK;
             case ImGuiToastType_Warning:
-                return ICON_FA_EXCLAMATION_TRIANGLE;
+                return ICON_FA_TRIANGLE_EXCLAMATION;
             case ImGuiToastType_Error:
-                return ICON_FA_TIMES_CIRCLE;
+                return ICON_FA_CIRCLE_QUESTION;
             case ImGuiToastType_Info:
-                return ICON_FA_INFO_CIRCLE;
+                return ICON_FA_CIRCLE_INFO;
             default:
                 return nullptr;
         }
@@ -304,29 +304,6 @@ namespace ImGui {
             // End
             End();
         }
-    }
-
-    /// <summary>
-    /// Adds font-awesome font, must be called ONCE on initialization
-    /// <param name="FontDataOwnedByAtlas">Fonts are loaded from read-only memory, should be set to false!</param>
-    /// </summary>
-    NOTIFY_INLINE void MergeIconsWithLatestFont(float font_size, bool FontDataOwnedByAtlas = false) {
-        static const ImWchar icons_ranges[] = {ICON_MIN_FA, ICON_MAX_FA, 0};
-
-        ImFontConfig icons_config;
-        icons_config.MergeMode = true;
-        icons_config.PixelSnapH = true;
-        icons_config.FontDataOwnedByAtlas = FontDataOwnedByAtlas;
-
-#ifndef NDEBUG
-        GetIO().Fonts->AddFontFromFileTTF("data/fonts/fa.ttf", font_size, &icons_config,
-                                            icons_ranges);
-#else
-        int size;
-        auto* bin = static_cast<void*>(Engine::Filesystem::readResourceFile("data/fonts/fa.ttf", &size));
-        GetIO().Fonts->AddFontFromMemoryTTF(bin, size, font_size, &icons_config,
-                                          icons_ranges);
-#endif
     }
 }
 
