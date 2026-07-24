@@ -23,7 +23,11 @@ Engine::Window::Window(int w, int h, const char *title) {
     }
     glfwMakeContextCurrent(window);
 
-    gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
+        PLOG_FATAL << "Failed to load OpenGL functions";
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
 
     const char *renderer = reinterpret_cast<const char *>(glGetString(GL_RENDERER));
     PLOGI << "Renderer: " << renderer;

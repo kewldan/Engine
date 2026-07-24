@@ -12,7 +12,12 @@ Engine::VInt *Engine::VInt::read(SOCKET socket) {
             if ((currentByte & CONTINUE_BIT) == 0) break;
 
             position += 7;
+            if (position >= 32) {
+                delete val;
+                return nullptr;
+            }
         } else {
+            delete val;
             return nullptr;
         }
     }
@@ -33,6 +38,10 @@ Engine::VInt *Engine::VInt::read(const char *buffer) {
         if ((currentByte & CONTINUE_BIT) == 0) break;
 
         position += 7;
+        if (position >= 32) {
+            delete val;
+            return nullptr;
+        }
         i++;
     }
 

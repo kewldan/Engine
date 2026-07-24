@@ -30,4 +30,5 @@ void Engine::HUD::init(Engine::Window *window) {
 void Engine::HUD::destroy() {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
 }

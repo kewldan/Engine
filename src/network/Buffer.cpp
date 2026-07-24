@@ -46,7 +46,7 @@ int Engine::Buffer::getSendBufferSize() {
     VInt dataLength(index - 5);
     index -= 5;
     index += dataLength.write(buffer);
-    memcpy(buffer + dataLength.getSize(), buffer + 5, dataLength.getValue());
+    memmove(buffer + dataLength.getSize(), buffer + 5, dataLength.getValue());
     return index;
 }
 
@@ -70,4 +70,6 @@ void Engine::Buffer::writeLong(long v) {
     index += sizeof(v);
 }
 
-Engine::Buffer::~Buffer() = default;
+Engine::Buffer::~Buffer() {
+    delete[] buffer;
+}

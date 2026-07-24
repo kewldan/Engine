@@ -19,7 +19,11 @@ Engine::Input::Input(GLFWwindow *window) : window(window) {
     startDragging = false;
 
     memset(keyPressed, 0, 318);
+    memset(keyJustPressed, 0, 318);
+    memset(keyJustReleased, 0, 318);
     memset(mousePressed, 0, 8);
+    memset(mouseJustPressed, 0, 8);
+    memset(mouseJustReleased, 0, 8);
 }
 
 void Engine::Input::showCursor() {
@@ -150,8 +154,10 @@ void Engine::Input::registerCallbacks() {
     glfwSetMouseButtonCallback(window, [](GLFWwindow *, int button, int action, int) {
         mouse_callback(button, action);
     });
-    glfwSetKeyCallback(window, [](GLFWwindow *, int key, int, int action, int scancode) {
-        key_callback(key - 32, action);
+    glfwSetKeyCallback(window, [](GLFWwindow *, int key, int, int action, int) {
+        if (key >= 32 && key <= GLFW_KEY_LAST) {
+            key_callback(key - 32, action);
+        }
     });
     glfwSetCursorPosCallback(window, [](GLFWwindow *, double xpos, double ypos) {
         cursor_callback((float) xpos, (float) ypos);
@@ -162,8 +168,8 @@ void Engine::Input::registerCallbacks() {
 }
 
 void Engine::Input::mouse_scroll_callback(float x, float y) {
-    Engine::Input::instance->scrollDelta.x = x;
-    Engine::Input::instance->scrollDelta.y = y;
+    Engine::Input::instance->scrollDelta.x += x;
+    Engine::Input::instance->scrollDelta.y += y;
 }
 
 glm::vec2 &Engine::Input::getMouseWheelDelta() {
@@ -179,12 +185,12 @@ void Engine::Input::setRawMode(bool value) {
 }
 
 Engine::Input::~Input() {
-    delete keyPressed;
-    delete mousePressed;
+    delete[] keyPressed;
+    delete[] mousePressed;
 
-    delete keyJustPressed;
-    delete mouseJustPressed;
+    delete[] keyJustPressed;
+    delete[] mouseJustPressed;
 
-    delete keyJustReleased;
-    delete mouseJustReleased;
+    delete[] keyJustReleased;
+    delete[] mouseJustReleased;
 }

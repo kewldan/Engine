@@ -17,10 +17,10 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
     fragment = -1;
     blockIndex = 0;
 
-    static char *path = new char[64];
-    strcpy_s(path, 64, "data/shaders/");
-    strcat_s(path, 64, filename);
-    strcat_s(path, 64, ".vert");
+    char path[128];
+    strcpy_s(path, "data/shaders/");
+    strcat_s(path, filename);
+    strcat_s(path, ".vert");
 
 #ifndef NDEBUG
     if (Engine::Filesystem::exists(path)) {
@@ -28,13 +28,13 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
     }
 
     path[strlen(path) - 5] = 0;
-    strcat_s(path, 64, ".frag");
+    strcat_s(path, ".frag");
     if (Engine::Filesystem::exists(path)) {
         fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
     }
 
     path[strlen(path) - 5] = 0;
-    strcat_s(path, 64, ".geom");
+    strcat_s(path, ".geom");
     if (Engine::Filesystem::exists(path)) {
         geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
     }
@@ -44,13 +44,13 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
     }
 
     path[strlen(path) - 5] = 0;
-    strcat_s(path, 64, ".frag");
+    strcat_s(path, ".frag");
     if (Engine::Filesystem::resourceExists(path)) {
         fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
     }
 
     path[strlen(path) - 5] = 0;
-    strcat_s(path, 64, ".geom");
+    strcat_s(path, ".geom");
     if (Engine::Filesystem::resourceExists(path)) {
         geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
     }
@@ -93,8 +93,13 @@ int Engine::Shader::loadShader(const char *path, int type, const char bitshift) 
 #else
     shader_source = Engine::Filesystem::readResourceString(path);
 #endif
+    if (shader_source == nullptr) {
+        PLOGE << "Shader source [" << path << "] could not be read";
+        return shader;
+    }
     glShaderSource(shader, 1, &shader_source, nullptr);
     glCompileShader(shader);
+    delete[] shader_source;
 
     int length = 0;
     glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
@@ -137,14 +142,18 @@ Engine::Shader::~Shader() {
     PLOGW << "Shader [" << filename << "] was destroyed";
     if ((shaderParts & SHADER_PART_VERTEX) != 0) {
         glDetachShader(program, vertex);
+        glDeleteShader(vertex);
     }
     if ((shaderParts & SHADER_PART_FRAGMENT) != 0) {
         glDetachShader(program, fragment);
+        glDeleteShader(fragment);
     }
     if ((shaderParts & SHADER_PART_GEOMETRY) != 0) {
         glDetachShader(program, geometry);
+        glDeleteShader(geometry);
     }
     glDeleteProgram(program);
+    delete uniforms;
 }
 
 void Engine::Shader::upload(const char *name, int value) const {
@@ -180,11 +189,11 @@ void Engine::Shader::upload(const char *name, glm::mat4 value) const {
 char *Engine::Shader::getElementName(const char *name, int index) {
     ASSERT("Name is nullptr", name != nullptr);
     ASSERT("Index must be >= 0", index >= 0);
-    static char *n = new char[96];
-    strcpy_s(n, 96, name);
-    strcat_s(n, 96, "[");
-    _itoa_s(index, n + strlen(n), 96, 10);
-    strcat_s(n, 96, "]");
+    static char n[96];
+    strcpy_s(n, name);
+    strcat_s(n, "[");
+    _itoa_s(index, n + strlen(n), sizeof(n) - strlen(n), 10);
+    strcat_s(n, "]");
     return n;
 }
 

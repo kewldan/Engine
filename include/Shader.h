@@ -5,6 +5,7 @@
 #include "glm/ext.hpp"
 #include <map>
 #include <plog/Log.h>
+#include <string>
 #include <unordered_map>
 #include "io/Filesystem.h"
 
@@ -19,7 +20,7 @@ namespace Engine {
         void add(unsigned int size, void *value);
     };
 
-    typedef std::unordered_map<const char *, int> Uniforms;
+    typedef std::unordered_map<std::string, int> Uniforms;
 
     class Shader {
     private:

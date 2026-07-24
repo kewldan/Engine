@@ -13,11 +13,11 @@ Engine::Texture::Texture(const char *filename) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    static char *f = new char[128];
-    strcpy_s(f, 128, "data/textures/");
-    strcat_s(f, 128, filename);
+    char f[160];
+    strcpy_s(f, "data/textures/");
+    strcat_s(f, filename);
     unsigned char *data;
 #ifndef NDEBUG
     data = stbi_load(f, &width, &height, &nrChannels, 0);

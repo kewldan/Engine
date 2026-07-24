@@ -91,55 +91,74 @@ bool Engine::Filesystem::resourceExists(const char *path) {
 unsigned char *Engine::Filesystem::compress(unsigned char *data, unsigned int length, unsigned long *compressedLength) {
     ASSERT("Data is nullptr", data != nullptr);
     ASSERT("Length must be >0", length > 0);
-    auto *deflated = new unsigned char[length];
-    z_stream defstream;
-    defstream.zalloc = Z_NULL;
-    defstream.zfree = Z_NULL;
-    defstream.opaque = Z_NULL;
-
-    defstream.avail_in = length;
-    defstream.next_in = data;
-    defstream.avail_out = length;
-    defstream.next_out = deflated;
-
-    deflateInit(&defstream, Z_BEST_COMPRESSION);
-    deflate(&defstream, Z_FINISH);
-    deflateEnd(&defstream);
+    if (compressedLength != nullptr)
+        *compressedLength = 0;
+    uLong bound = compressBound(length);
+    auto *deflated = new unsigned char[bound];
+    uLongf destLen = bound;
+    if (compress2(deflated, &destLen, data, length, Z_BEST_COMPRESSION) != Z_OK) {
+        PLOGE << "Deflate failed for " << length << " bytes";
+        delete[] deflated;
+        return nullptr;
+    }
 
     if (compressedLength != nullptr)
-        *compressedLength = defstream.total_out;
+        *compressedLength = destLen;
 
     return deflated;
 }
 
 unsigned char *
 Engine::Filesystem::decompress(unsigned char *data, unsigned int length, unsigned long *decompressedLength) {
+    if (decompressedLength != nullptr)
+        *decompressedLength = 0;
+    if (data == nullptr || length == 0)
+        return nullptr;
 
     z_stream infstream;
     infstream.zalloc = Z_NULL;
     infstream.zfree = Z_NULL;
     infstream.opaque = Z_NULL;
-
     infstream.next_in = data;
     infstream.avail_in = length;
+    infstream.total_out = 0;
 
-    auto *inflated = (unsigned char *) malloc(128);
-    infstream.next_out = inflated;
+    if (inflateInit(&infstream) != Z_OK)
+        return nullptr;
 
-    inflateInit(&infstream);
-    for (int i = 0;; i++) {
-        infstream.avail_out = 64;
-        infstream.next_out = inflated + 64 * i;
-        int err = inflate(&infstream, Z_SYNC_FLUSH);
-        if (err == Z_STREAM_END) break;
-        inflated = static_cast<unsigned char *>(realloc(inflated, 128 + 64 * i));
+    size_t capacity = 4096;
+    auto *inflated = (unsigned char *) malloc(capacity);
+    if (inflated == nullptr) {
+        inflateEnd(&infstream);
+        return nullptr;
     }
-    inflateEnd(&infstream);
 
+    for (;;) {
+        if (infstream.total_out == capacity) {
+            capacity *= 2;
+            auto *grown = (unsigned char *) realloc(inflated, capacity);
+            if (grown == nullptr) {
+                free(inflated);
+                inflateEnd(&infstream);
+                return nullptr;
+            }
+            inflated = grown;
+        }
+        infstream.next_out = inflated + infstream.total_out;
+        infstream.avail_out = (uInt) (capacity - infstream.total_out);
+        int err = inflate(&infstream, Z_NO_FLUSH);
+        if (err == Z_STREAM_END) break;
+        if (err == Z_OK || (err == Z_BUF_ERROR && infstream.avail_out == 0)) continue;
+        PLOGW << "Inflate failed with code " << err << ", input corrupted or truncated";
+        free(inflated);
+        inflateEnd(&infstream);
+        return nullptr;
+    }
 
     if (decompressedLength != nullptr)
         *decompressedLength = infstream.total_out;
 
+    inflateEnd(&infstream);
     return inflated;
 }
 

@@ -9,7 +9,7 @@ class SocketServer {
 private:
     WSADATA wsa;
     SOCKET socket;
-    char* address;
+    const char* address;
     int port;
     char buffer[65536];
     struct sockaddr_in info;
