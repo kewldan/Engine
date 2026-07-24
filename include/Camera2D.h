@@ -25,6 +25,10 @@ namespace Engine {
 
         void zoomIn(float factor);
 
+        // Zoom keeping the world point under `anchor` fixed on screen.
+        // anchor is in [0..1]x[0..1], x from the left edge, y from the bottom edge.
+        void zoomAt(float factor, glm::vec2 anchor);
+
         void setProjectionDistance(float z_near, float z_far);
 
         [[nodiscard]] const glm::mat4 &getView() const;

@@ -42,6 +42,14 @@ void Engine::Camera2D::zoomIn(float factor) {
     zoom->start(zoom->getTargetValue() + factor);
 }
 
+void Engine::Camera2D::zoomAt(float factor, glm::vec2 anchor) {
+    float z0 = zoom->getTargetValue();
+    zoom->start(z0 + factor);
+    float z1 = zoom->getTargetValue();
+    position.x += (2.f * anchor.x - 1.f) * (float) window->width * (z0 - z1);
+    position.y += (2.f * anchor.y - 1.f) * (float) window->height * (z0 - z1);
+}
+
 Engine::Camera2D::~Camera2D() {
     delete zoom;
 }
