@@ -6,7 +6,7 @@
 namespace Engine {
     class Animation {
     private:
-        float currentValue{}, targetValue{}, minValue{}, maxValue{};
+        float currentValue{}, startValue{}, targetValue{}, minValue{}, maxValue{};
         double startTime{}, duration{};
     public:
         explicit Animation(double duration = 0.5, float minValue = -99999.f, float maxValue = 99999.f);

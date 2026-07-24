@@ -6,9 +6,16 @@ Engine::Camera2D::Camera2D(Engine::Window *window) : window(window) {
 }
 
 void Engine::Camera2D::update() {
+    float z = zoom->getValue();
+    if (z != lastZoom) {
+        // keep the world point under the anchor fixed while the zoom animates
+        position.x += (2.f * zoomAnchor.x - 1.f) * (float) window->width * (lastZoom - z);
+        position.y += (2.f * zoomAnchor.y - 1.f) * (float) window->height * (lastZoom - z);
+        lastZoom = z;
+    }
+
     view = glm::translate(glm::mat4(1), -position);
 
-    float z = zoom->getValue();
     left = (float) window->width * (1 - z);
     right = (float) window->width * z;
     top = (float) window->height * z;
@@ -35,19 +42,18 @@ const glm::mat4 &Engine::Camera2D::getProjection() const {
 }
 
 void Engine::Camera2D::setZoom(float newZoom) {
+    zoomAnchor = glm::vec2(0.5f, 0.5f); // centered zoom shifts nothing
     zoom->start(newZoom);
 }
 
 void Engine::Camera2D::zoomIn(float factor) {
+    zoomAnchor = glm::vec2(0.5f, 0.5f);
     zoom->start(zoom->getTargetValue() + factor);
 }
 
 void Engine::Camera2D::zoomAt(float factor, glm::vec2 anchor) {
-    float z0 = zoom->getTargetValue();
-    zoom->start(z0 + factor);
-    float z1 = zoom->getTargetValue();
-    position.x += (2.f * anchor.x - 1.f) * (float) window->width * (z0 - z1);
-    position.y += (2.f * anchor.y - 1.f) * (float) window->height * (z0 - z1);
+    zoomAnchor = anchor;
+    zoom->start(zoom->getTargetValue() + factor);
 }
 
 Engine::Camera2D::~Camera2D() {

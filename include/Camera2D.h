@@ -8,6 +8,8 @@ namespace Engine {
     private:
         glm::mat4 view{}, orthographic{};
         Engine::Animation *zoom;
+        glm::vec2 zoomAnchor{0.5f, 0.5f};
+        float lastZoom{1.f};
         float Z_NEAR = 0.01f, Z_FAR = 10.f;
     public:
         Engine::Window *window;
