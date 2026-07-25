@@ -11,6 +11,11 @@ find_package(ZLIB REQUIRED)
 
 file(GLOB_RECURSE SRCS ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/thirdparty/*.cpp)
 
+if (NOT WIN32)
+    # The networking helpers are Winsock-only; skip them off Windows.
+    list(FILTER SRCS EXCLUDE REGEX "/network/")
+endif ()
+
 add_library(
         Engine
         STATIC

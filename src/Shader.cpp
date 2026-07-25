@@ -1,4 +1,5 @@
 #include "Shader.h"
+#include <cstdio>
 
 #define SHADER_PART_VERTEX 1
 #define SHADER_PART_GEOMETRY 2
@@ -18,9 +19,7 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
     blockIndex = 0;
 
     char path[128];
-    strcpy_s(path, "data/shaders/");
-    strcat_s(path, filename);
-    strcat_s(path, ".vert");
+    std::snprintf(path, sizeof(path), "data/shaders/%s.vert", filename);
 
 #ifndef NDEBUG
     if (Engine::Filesystem::exists(path)) {
@@ -28,13 +27,13 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
     }
 
     path[strlen(path) - 5] = 0;
-    strcat_s(path, ".frag");
+    strncat(path, ".frag", sizeof(path) - strlen(path) - 1);
     if (Engine::Filesystem::exists(path)) {
         fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
     }
 
     path[strlen(path) - 5] = 0;
-    strcat_s(path, ".geom");
+    strncat(path, ".geom", sizeof(path) - strlen(path) - 1);
     if (Engine::Filesystem::exists(path)) {
         geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
     }
@@ -44,13 +43,13 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
     }
 
     path[strlen(path) - 5] = 0;
-    strcat_s(path, ".frag");
+    strncat(path, ".frag", sizeof(path) - strlen(path) - 1);
     if (Engine::Filesystem::resourceExists(path)) {
         fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
     }
 
     path[strlen(path) - 5] = 0;
-    strcat_s(path, ".geom");
+    strncat(path, ".geom", sizeof(path) - strlen(path) - 1);
     if (Engine::Filesystem::resourceExists(path)) {
         geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
     }
@@ -190,10 +189,7 @@ char *Engine::Shader::getElementName(const char *name, int index) {
     ASSERT("Name is nullptr", name != nullptr);
     ASSERT("Index must be >= 0", index >= 0);
     static char n[96];
-    strcpy_s(n, name);
-    strcat_s(n, "[");
-    _itoa_s(index, n + strlen(n), sizeof(n) - strlen(n), 10);
-    strcat_s(n, "]");
+    std::snprintf(n, sizeof(n), "%s[%d]", name, index);
     return n;
 }
 

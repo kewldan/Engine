@@ -2,7 +2,7 @@
 
 char *Engine::Filesystem::readFile(const char *path, int *size) {
     ASSERT("Path is nullptr", path != nullptr);
-    std::ifstream stream(path, std::ios::out | std::ios::binary);
+    std::ifstream stream(path, std::ios::in | std::ios::binary);
     if (!stream) {
         PLOGW << "The requested file [" << path << "] does not exist";
         return nullptr;
@@ -36,7 +36,7 @@ bool Engine::Filesystem::exists(const char *path) {
 }
 
 char *Engine::Filesystem::readString(const char *path) {
-    std::ifstream stream(path, std::ios::out | std::ios::binary);
+    std::ifstream stream(path, std::ios::in | std::ios::binary);
     if (!stream) {
         PLOGW << "The requested string [" << path << "] does not exist";
         return nullptr;
@@ -55,6 +55,7 @@ bool Engine::Filesystem::writeString(const char *path, const char *data) {
 }
 
 char *Engine::Filesystem::readResourceFile(const char *path, int *size) {
+#ifdef _WIN32
     ASSERT("Path is nullptr", path != nullptr);
     auto myResource = ::FindResource(nullptr, path, RT_RCDATA);
     if (!myResource) {
@@ -65,9 +66,13 @@ char *Engine::Filesystem::readResourceFile(const char *path, int *size) {
     if (size != nullptr)
         *size = (int) ::SizeofResource(nullptr, myResource);
     return static_cast<char *>(::LockResource(myResourceData));
+#else
+    return readFile(path, size);
+#endif
 }
 
 char *Engine::Filesystem::readResourceString(const char *path) {
+#ifdef _WIN32
     ASSERT("Path is nullptr", path != nullptr);
     auto myResource = ::FindResource(nullptr, path, RT_RCDATA);
     if (!myResource) {
@@ -82,10 +87,17 @@ char *Engine::Filesystem::readResourceString(const char *path) {
     str[size] = 0;
     memcpy(str, pMyBinaryData, size);
     return str;
+#else
+    return readString(path);
+#endif
 }
 
 bool Engine::Filesystem::resourceExists(const char *path) {
+#ifdef _WIN32
     return ::FindResourceA(nullptr, path, RT_RCDATA);
+#else
+    return exists(path);
+#endif
 }
 
 unsigned char *Engine::Filesystem::compress(unsigned char *data, unsigned int length, unsigned long *compressedLength) {

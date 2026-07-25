@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Windows.h"
 #include "glad/glad.h"
 #include "glm/ext.hpp"
 #include <map>

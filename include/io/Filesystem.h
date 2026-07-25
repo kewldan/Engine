@@ -4,7 +4,9 @@
 #include <iostream>
 #include <filesystem>
 #include "plog/Log.h"
+#ifdef _WIN32
 #include <Windows.h>
+#endif
 #include "Engine.h"
 #include "zlib.h"
 

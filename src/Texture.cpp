@@ -1,6 +1,7 @@
 #include "Texture.h"
 
 #include "io/Filesystem.h"
+#include <cstdio>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
@@ -16,8 +17,7 @@ Engine::Texture::Texture(const char *filename) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     char f[160];
-    strcpy_s(f, "data/textures/");
-    strcat_s(f, filename);
+    std::snprintf(f, sizeof(f), "data/textures/%s", filename);
     unsigned char *data;
 #ifndef NDEBUG
     data = stbi_load(f, &width, &height, &nrChannels, 0);

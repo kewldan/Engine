@@ -6,7 +6,15 @@
 
 #pragma once
 
+#ifdef _WIN32
 #include <Windows.h>
+#else
+#include <chrono>
+inline uint64_t GetTickCount64() {
+    return static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::steady_clock::now().time_since_epoch()).count());
+}
+#endif
 #include <vector>
 #include <string>
 #include "IconsFontAwesome6.h"
@@ -240,7 +248,7 @@ namespace ImGui {
 
             // Generate new unique name for this toast
             char window_name[50];
-            sprintf_s(window_name, "##TOAST%d", i);
+            snprintf(window_name, sizeof(window_name), "##TOAST%d", i);
 
             //PushStyleColor(ImGuiCol_Text, text_color);
             SetNextWindowBgAlpha(opacity);
