@@ -11,9 +11,15 @@ Engine::Window::Window(int w, int h, const char *title) {
     width = w;
     height = h;
 
+#ifdef __EMSCRIPTEN__
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+#else
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#endif
 
     window = glfwCreateWindow(w, h, title, nullptr, nullptr);
     if (!window) {
@@ -23,11 +29,13 @@ Engine::Window::Window(int w, int h, const char *title) {
     }
     glfwMakeContextCurrent(window);
 
+#ifndef __EMSCRIPTEN__
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         PLOG_FATAL << "Failed to load OpenGL functions";
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
+#endif
 
     const char *renderer = reinterpret_cast<const char *>(glGetString(GL_RENDERER));
     PLOGI << "Renderer: " << renderer;

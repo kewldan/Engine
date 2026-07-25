@@ -1,5 +1,6 @@
 #include "Shader.h"
 #include <cstdio>
+#include <string>
 
 #define SHADER_PART_VERTEX 1
 #define SHADER_PART_GEOMETRY 2
@@ -96,7 +97,18 @@ int Engine::Shader::loadShader(const char *path, int type, const char bitshift) 
         PLOGE << "Shader source [" << path << "] could not be read";
         return shader;
     }
+#ifdef __EMSCRIPTEN__
+    std::string source = shader_source;
+    const std::size_t versionEnd = source.find('\n');
+    if (source.rfind("#version", 0) == 0 && versionEnd != std::string::npos) {
+        source = "#version 300 es\nprecision highp float;\nprecision highp int;\n"
+                 + source.substr(versionEnd + 1);
+    }
+    const char *patched_source = source.c_str();
+    glShaderSource(shader, 1, &patched_source, nullptr);
+#else
     glShaderSource(shader, 1, &shader_source, nullptr);
+#endif
     glCompileShader(shader);
     delete[] shader_source;
 

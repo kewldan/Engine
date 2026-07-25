@@ -18,7 +18,11 @@ void Engine::HUD::init(Engine::Window *window) {
     ImGui::CreateContext();
     ImGui::StyleColorsDark();
     ImGui_ImplGlfw_InitForOpenGL(window->getId(), true);
+#ifdef __EMSCRIPTEN__
+    ImGui_ImplOpenGL3_Init("#version 300 es");
+#else
     ImGui_ImplOpenGL3_Init("#version 330");
+#endif
     ImGuiIO &io = ImGui::GetIO();
 
     io.IniFilename = nullptr;

@@ -1,6 +1,13 @@
 #pragma once
 
+#ifdef __EMSCRIPTEN__
+#include <GLES3/gl3.h>
+#ifndef GL_GEOMETRY_SHADER
+#define GL_GEOMETRY_SHADER 0x8DD9
+#endif
+#else
 #include "glad/glad.h"
+#endif
 #include "glm/ext.hpp"
 #include <map>
 #include <plog/Log.h>
