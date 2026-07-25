@@ -59,6 +59,19 @@ Engine::Shader::Shader(const char *filename) : filename(filename) {
 
     glLinkProgram(program);
 
+    {
+        int linked = 0;
+        glGetProgramiv(program, GL_LINK_STATUS, &linked);
+        int logLength = 0;
+        glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
+        if (linked != GL_TRUE || logLength > 0) {
+            char *log = new char[logLength > 0 ? logLength : 1];
+            glGetProgramInfoLog(program, logLength, nullptr, log);
+            printf("[program %s] link=%d log:\n%s\n", filename, linked, log);
+            delete[] log;
+        }
+    }
+
     if (shaderParts == 0) {
         PLOGW << "Empty shader [" << filename << "] linked";
     } else {
@@ -118,6 +131,7 @@ int Engine::Shader::loadShader(const char *path, int type, const char bitshift) 
         char *log = new char[length];
         glGetShaderInfoLog(shader, length, nullptr, log);
         PLOG_WARNING << "Shader log:\n" << log;
+        printf("[shader %s]\n%s\n", path, log);
         delete[] log;
     }
 
@@ -128,6 +142,7 @@ int Engine::Shader::loadShader(const char *path, int type, const char bitshift) 
         shaderParts += bitshift;
     } else {
         PLOG_WARNING << "Shader found, but not attached";
+        printf("[shader %s] FAILED TO COMPILE\n", path);
     }
     return shader;
 }
