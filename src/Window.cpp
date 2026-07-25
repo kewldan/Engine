@@ -3,6 +3,10 @@
 #include "Engine.h"
 #include "io/Filesystem.h"
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten/html5.h>
+#endif
+
 Engine::Window::Window(int w, int h, const char *title) {
     ASSERT("Window width is below than 0", w > 0);
     ASSERT("Window height is below than 0", h > 0);
@@ -29,7 +33,11 @@ Engine::Window::Window(int w, int h, const char *title) {
     }
     glfwMakeContextCurrent(window);
 
-#ifndef __EMSCRIPTEN__
+#ifdef __EMSCRIPTEN__
+    // WebGL2 keeps float color buffers behind an extension; the HDR/bloom
+    // render targets (RGBA16F) need it to be framebuffer-complete.
+    emscripten_webgl_enable_extension(emscripten_webgl_get_current_context(), "EXT_color_buffer_float");
+#else
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         PLOG_FATAL << "Failed to load OpenGL functions";
         glfwTerminate();
