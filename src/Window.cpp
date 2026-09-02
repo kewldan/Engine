@@ -24,6 +24,10 @@ Engine::Window::Window(int w, int h, const char *title) {
         exit(EXIT_FAILURE);
     }
     glfwMakeContextCurrent(window);
+    // Start from a known swap interval: setVsync() only touches it when the value changes, and the
+    // driver default is not necessarily off.
+    glfwSwapInterval(1);
+    vsync = true;
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         PLOG_FATAL << "Failed to load OpenGL functions";
