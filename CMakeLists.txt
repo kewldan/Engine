@@ -54,6 +54,15 @@ if (WIN32)
     target_compile_definitions(Engine PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
 endif ()
 
+# plog picks `char` or `wchar_t` for its message type from PLOG_CHAR_IS_UTF8 (auto-detected from
+# MSVC's /utf-8). The setting must be identical in Engine.lib and in every executable that links it,
+# otherwise plog's Record layout differs across the library boundary and log lines come out garbled.
+# Pin it PUBLICly so consumers inherit the same configuration.
+target_compile_definitions(Engine PUBLIC PLOG_CHAR_IS_UTF8=1)
+if (MSVC)
+    target_compile_options(Engine PUBLIC /utf-8)
+endif ()
+
 if (MSVC)
     target_compile_options(Engine PRIVATE /W4)
 else ()
