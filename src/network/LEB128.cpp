@@ -1,56 +1,66 @@
 #include "network/LEB128.h"
+#include <cstdint>
 
 Engine::VInt *Engine::VInt::read(SOCKET socket) {
-    auto val = new VInt(0);
+    uint32_t result = 0;
     int position = 0;
     char currentByte;
 
     while (true) {
         if (recv(socket, &currentByte, 1, 0) == 1) {
-            val->value |= (currentByte & SEGMENT_BITS) << position;
+            // Accumulate in an unsigned type: shifting a masked byte by 28 would overflow `int` (UB).
+            result |= (uint32_t) (currentByte & SEGMENT_BITS) << position;
 
             if ((currentByte & CONTINUE_BIT) == 0) break;
 
             position += 7;
             if (position >= 32) {
-                delete val;
                 return nullptr;
             }
         } else {
-            delete val;
             return nullptr;
         }
     }
 
-    return val;
+    return new VInt((int) result);
 }
 
 Engine::VInt *Engine::VInt::read(const char *buffer) {
-    auto val = new VInt(0);
+    return read(buffer, MAX_SIZE);
+}
+
+Engine::VInt *Engine::VInt::read(const char *buffer, std::size_t length) {
+    if (buffer == nullptr) {
+        return nullptr;
+    }
+    uint32_t result = 0;
     int position = 0;
-    char currentByte;
-    int i = 0;
+    std::size_t i = 0;
 
     while (true) {
-        currentByte = buffer[i];
-        val->value |= (currentByte & SEGMENT_BITS) << position;
+        if (i >= length) {
+            return nullptr; // truncated
+        }
+        const char currentByte = buffer[i];
+        result |= (uint32_t) (currentByte & SEGMENT_BITS) << position;
 
         if ((currentByte & CONTINUE_BIT) == 0) break;
 
         position += 7;
         if (position >= 32) {
-            delete val;
             return nullptr;
         }
         i++;
     }
 
-    return val;
+    return new VInt((int) result);
 }
 
 int Engine::VInt::write(char *buffer) const {
     int count = 0;
-    int val = this->value;
+    // Unsigned so that negative values terminate after 5 bytes instead of looping forever
+    // (an arithmetic right shift of a negative int never reaches 0).
+    uint32_t val = (uint32_t) this->value;
 
     do {
         unsigned char byte = val & 0x7f;
@@ -59,16 +69,16 @@ int Engine::VInt::write(char *buffer) const {
         if (val != 0)
             byte |= 0x80;  // mark this byte to show that more bytes will follow
 
-        buffer[count] = byte;
+        buffer[count] = (char) byte;
         count++;
     } while (val != 0);
 
     return count;
 }
 
-int Engine::VInt::getSize() {
+int Engine::VInt::getSize() const {
     int size = 0;
-    int val = this->value;
+    uint32_t val = (uint32_t) this->value;
     do {
         val >>= 7;
         ++size;

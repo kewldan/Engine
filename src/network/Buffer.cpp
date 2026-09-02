@@ -1,12 +1,18 @@
 #include "network/Buffer.h"
+#include <cstring>
 
-Engine::Buffer::Buffer(int length) {
-    buffer = new char[length];
+Engine::Buffer::Buffer(int length) : capacity(length) {
+    ASSERT("Buffer must fit the length prefix", length > HEADER_RESERVE);
+    if (capacity < HEADER_RESERVE) {
+        capacity = HEADER_RESERVE;
+    }
+    buffer = new char[capacity];
     clear();
 }
 
 void Engine::Buffer::clear() {
-    index = 5;
+    index = HEADER_RESERVE;
+    finalized = false;
 }
 
 char *Engine::Buffer::get() {
@@ -17,16 +23,37 @@ int Engine::Buffer::getIndex() const {
     return index;
 }
 
+int Engine::Buffer::getCapacity() const {
+    return capacity;
+}
+
+bool Engine::Buffer::ensureSpace(int length) const {
+    ASSERT("Write length must be >= 0", length >= 0);
+    if (length < 0 || length > capacity - index) {
+        PLOGE << "Buffer overflow: " << length << " bytes requested, " << (capacity - index) << " left";
+        return false;
+    }
+    return true;
+}
+
+void Engine::Buffer::writeRaw(const void *v, int length) {
+    if (!ensureSpace(length)) {
+        return;
+    }
+    memcpy(buffer + index, v, length);
+    index += length;
+}
+
 void Engine::Buffer::writeString(const char *v) {
     ASSERT("Input string is nullptr", v != nullptr);
-    writeVarInt((int) strlen(v));
-    writeArray(v, (int) strlen(v));
+    const int length = (int) strlen(v);
+    writeVarInt(length);
+    writeArray(v, length);
 }
 
 void Engine::Buffer::writeArray(const char *v, int length) {
     ASSERT("Input array is nullptr", v != nullptr);
-    memcpy(buffer + index, v, length);
-    index += length;
+    writeRaw(v, length);
 }
 
 void Engine::Buffer::writeVarInt(int v) {
@@ -34,40 +61,44 @@ void Engine::Buffer::writeVarInt(int v) {
 }
 
 void Engine::Buffer::writeVarInt(Engine::VInt v) {
+    if (!ensureSpace(v.getSize())) {
+        return;
+    }
     index += v.write(buffer + index);
 }
 
 void Engine::Buffer::writeLongLong(long long v) {
-    memcpy(buffer + index, &v, sizeof(v));
-    index += sizeof(v);
+    writeRaw(&v, sizeof(v));
 }
 
 int Engine::Buffer::getSendBufferSize() {
-    VInt dataLength(index - 5);
-    index -= 5;
-    index += dataLength.write(buffer);
-    memmove(buffer + dataLength.getSize(), buffer + 5, dataLength.getValue());
+    if (finalized) {
+        PLOGE << "getSendBufferSize() called twice without clear(); the packet is already framed";
+        return index;
+    }
+    finalized = true;
+    const int payloadLength = index - HEADER_RESERVE;
+    VInt dataLength(payloadLength);
+    const int headerSize = dataLength.write(buffer);
+    memmove(buffer + headerSize, buffer + HEADER_RESERVE, payloadLength);
+    index = headerSize + payloadLength;
     return index;
 }
 
 void Engine::Buffer::writeInt(int v) {
-    memcpy(buffer + index, &v, sizeof(v));
-    index += sizeof(v);
+    writeRaw(&v, sizeof(v));
 }
 
 void Engine::Buffer::writeBool(bool v) {
-    buffer[index] = v ? 1 : 0;
-    index++;
+    writeByte(v ? 1 : 0);
 }
 
 void Engine::Buffer::writeByte(char v) {
-    buffer[index] = v;
-    index++;
+    writeRaw(&v, sizeof(v));
 }
 
 void Engine::Buffer::writeLong(long v) {
-    memcpy(buffer + index, &v, sizeof(v));
-    index += sizeof(v);
+    writeRaw(&v, sizeof(v));
 }
 
 Engine::Buffer::~Buffer() {

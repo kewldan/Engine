@@ -1,20 +1,18 @@
 #pragma once
 
-#include <fstream>
-#include <iostream>
 #include <filesystem>
 #include "plog/Log.h"
-#ifdef _WIN32
-#include <Windows.h>
-#endif
 #include "Engine.h"
-#include "zlib.h"
 
 namespace Engine {
+    // Ownership: every `char *` / `unsigned char *` returned by this class is allocated with
+    // `new[]` and must be released by the caller with `delete[]` (nullptr on failure).
     class Filesystem {
     public:
         static char *readFile(const char *path, int *size = nullptr);
 
+        // Debug builds read plain files; on Windows release builds `path` names an RT_RCDATA
+        // resource embedded in the executable (elsewhere it falls back to readFile).
         static char *readResourceFile(const char *path, int *size = nullptr);
 
         static bool writeFile(const char *path, const char *data, unsigned int size);
@@ -31,8 +29,8 @@ namespace Engine {
 
         static std::filesystem::path getWorkingPath();
 
-        static unsigned char *compress(unsigned char *data, unsigned int length, unsigned long *compressedLength);
+        static unsigned char *compress(const unsigned char *data, unsigned int length, unsigned long *compressedLength);
 
-        static unsigned char *decompress(unsigned char *data, unsigned int length, unsigned long *decompressedLength);
+        static unsigned char *decompress(const unsigned char *data, unsigned int length, unsigned long *decompressedLength);
     };
 }
