@@ -97,11 +97,16 @@ void Engine::Window::setIcon(const char *path) {
 
 void Engine::Window::init() {
 #ifndef NDEBUG
-    std::remove("latest.log");
-    plog::init(plog::debug, "latest.log");
-    // plog keeps a pointer to the appender for the whole run, so it must outlive init().
-    static plog::ColorConsoleAppender<plog::FuncMessageFormatter> consoleAppender;
-    plog::get()->addAppender(&consoleAppender);
+    // Only set up logging if the application has not already done so: deleting a log file that
+    // another RollingFileAppender holds open and adding a second file appender interleaves and
+    // corrupts latest.log.
+    if (plog::get() == nullptr) {
+        std::remove("latest.log");
+        plog::init(plog::debug, "latest.log");
+        // plog keeps a pointer to the appender for the whole run, so it must outlive init().
+        static plog::ColorConsoleAppender<plog::FuncMessageFormatter> consoleAppender;
+        plog::get()->addAppender(&consoleAppender);
+    }
 #endif
     PLOGI << "ImGui version: " << ImGui::GetVersion();
     PLOGI << "Glfw version: " << glfwGetVersionString();

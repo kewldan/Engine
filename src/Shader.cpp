@@ -116,18 +116,26 @@ GLuint Engine::Shader::loadShader(const char *path, int type, const char bitshif
     return 0;
 }
 
-GLint Engine::Shader::getUniformLocation(const char *name) const {
+GLint Engine::Shader::lookupUniform(const char *name, bool logMissing) const {
     ASSERT("Name is nullptr", name != nullptr);
     auto it = uniforms.find(std::string_view(name));
     if (it != uniforms.end()) {
         return it->second;
     }
     GLint value = glGetUniformLocation(program, name);
-    if (value == -1) {
+    if (value == -1 && logMissing) {
         PLOGE << "Uniform location in shader [" << filename << "] not found > " << name;
     }
     uniforms.emplace(name, value);
     return value;
+}
+
+GLint Engine::Shader::getUniformLocation(const char *name) const {
+    return lookupUniform(name, true);
+}
+
+bool Engine::Shader::hasUniform(const char *name) const {
+    return lookupUniform(name, false) != -1;
 }
 
 void Engine::Shader::bind() const {

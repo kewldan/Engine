@@ -45,6 +45,9 @@ namespace Engine {
         int8_t shaderParts{};
         std::string filename;
 
+        // Cached uniform lookup; logs an error for a missing uniform only when `logMissing` is set.
+        int lookupUniform(const char *name, bool logMissing) const;
+
         int getUniformLocation(const char *name) const;
 
         int getAttribLocation(const char *name) const;
@@ -63,6 +66,9 @@ namespace Engine {
         [[nodiscard]] unsigned int getProgramId() const;
 
         void bind() const;
+
+        // True if the linked program has an active uniform called `name` (uses the same cache as upload()).
+        [[nodiscard]] bool hasUniform(const char *name) const;
 
         void upload(const char *name, int value) const;
 
