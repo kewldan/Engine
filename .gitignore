@@ -37,3 +37,13 @@ lib/
 build/
 /build
 /build/
+
+# IDE / editor state
+.idea/
+.vs/
+cmake-build-*/
+out/
+
+# vcpkg manifest install dir, runtime log
+vcpkg_installed/
+latest.log
