@@ -1,12 +1,12 @@
 #include "Camera2D.h"
 
-Engine::Camera2D::Camera2D(Engine::Window *window) : window(window) {
-    zoom = new Engine::Animation(0.5, 0.65f, 3.5f);
-    zoom->start(1.f);
+Engine::Camera2D::Camera2D(Engine::Window *window) : zoom(0.5, 0.65f, 3.5f), window(window) {
+    ASSERT("Window is nullptr", window != nullptr);
+    zoom.start(1.f);
 }
 
 void Engine::Camera2D::update() {
-    float z = zoom->getValue();
+    float z = zoom.getValue();
     if (z != lastZoom) {
         // keep the world point under the anchor fixed while the zoom animates
         position.x += (2.f * zoomAnchor.x - 1.f) * (float) window->width * (lastZoom - z);
@@ -25,7 +25,7 @@ void Engine::Camera2D::update() {
 }
 
 float Engine::Camera2D::getZoom() {
-    return zoom->getValue();
+    return zoom.getValue();
 }
 
 void Engine::Camera2D::setProjectionDistance(float z_near, float z_far) {
@@ -43,19 +43,15 @@ const glm::mat4 &Engine::Camera2D::getProjection() const {
 
 void Engine::Camera2D::setZoom(float newZoom) {
     zoomAnchor = glm::vec2(0.5f, 0.5f); // centered zoom shifts nothing
-    zoom->start(newZoom);
+    zoom.start(newZoom);
 }
 
 void Engine::Camera2D::zoomIn(float factor) {
     zoomAnchor = glm::vec2(0.5f, 0.5f);
-    zoom->start(zoom->getTargetValue() + factor);
+    zoom.start(zoom.getTargetValue() + factor);
 }
 
 void Engine::Camera2D::zoomAt(float factor, glm::vec2 anchor) {
     zoomAnchor = anchor;
-    zoom->start(zoom->getTargetValue() + factor);
-}
-
-Engine::Camera2D::~Camera2D() {
-    delete zoom;
+    zoom.start(zoom.getTargetValue() + factor);
 }

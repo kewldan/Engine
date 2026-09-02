@@ -4,20 +4,31 @@
 #include "Engine.h"
 #include "plog/Log.h"
 #include <GLFW/glfw3.h>
+#include <array>
 
 namespace Engine {
     class Input {
     private:
+        // Keys below GLFW_KEY_SPACE (32) are never reported, so the tables start at 32.
+        static constexpr int KEY_OFFSET = GLFW_KEY_SPACE;
+        static constexpr int KEY_COUNT = GLFW_KEY_LAST - KEY_OFFSET + 1;
+        static constexpr int MOUSE_BUTTON_COUNT = GLFW_MOUSE_BUTTON_LAST + 1;
+
         static Input *instance;
+        // Callbacks that were installed before ours (e.g. ImGui's); we forward to them.
+        static GLFWmousebuttonfun prevMouseButtonCallback;
+        static GLFWkeyfun prevKeyCallback;
+        static GLFWcursorposfun prevCursorPosCallback;
+        static GLFWscrollfun prevScrollCallback;
+
         GLFWwindow *window;
         glm::vec2 cursorPosition{};
         glm::vec2 lastCursorPosition{};
         glm::vec2 draggingStartPosition{};
         glm::vec2 scrollDelta{};
-        bool *keyPressed, *mousePressed;
-        bool *keyJustPressed, *mouseJustPressed;
-        bool *keyJustReleased, *mouseJustReleased;
-        bool dragging, startDragging, stopDragging;
+        std::array<bool, KEY_COUNT> keyPressed{}, keyJustPressed{}, keyJustReleased{};
+        std::array<bool, MOUSE_BUTTON_COUNT> mousePressed{}, mouseJustPressed{}, mouseJustReleased{};
+        bool dragging{}, startDragging{}, stopDragging{};
 
         static void key_callback(int key, int action);
 
@@ -27,9 +38,18 @@ namespace Engine {
 
         static void mouse_scroll_callback(float x, float y);
 
+        static bool isValidKey(int key);
+
+        static bool isValidButton(int button);
+
     public:
         explicit Input(GLFWwindow *window);
+
         ~Input();
+
+        Input(const Input &) = delete;
+
+        Input &operator=(const Input &) = delete;
 
         void registerCallbacks();
 
@@ -43,17 +63,17 @@ namespace Engine {
 
         bool update();
 
-        bool isKeyPressed(int key);
+        [[nodiscard]] bool isKeyPressed(int key) const;
 
-        bool isKeyJustPressed(int key);
+        [[nodiscard]] bool isKeyJustPressed(int key) const;
 
-        bool isKeyJustReleased(int key);
+        [[nodiscard]] bool isKeyJustReleased(int key) const;
 
-        bool isMouseButtonPressed(int button);
+        [[nodiscard]] bool isMouseButtonPressed(int button) const;
 
-        bool isMouseButtonJustPressed(int button);
+        [[nodiscard]] bool isMouseButtonJustPressed(int button) const;
 
-        bool isMouseButtonJustReleased(int button);
+        [[nodiscard]] bool isMouseButtonJustReleased(int button) const;
 
         void setClipboard(const char *value);
 

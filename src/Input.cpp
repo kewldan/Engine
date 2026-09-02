@@ -1,6 +1,10 @@
 #include "Input.h"
 
 Engine::Input *Engine::Input::instance = nullptr;
+GLFWmousebuttonfun Engine::Input::prevMouseButtonCallback = nullptr;
+GLFWkeyfun Engine::Input::prevKeyCallback = nullptr;
+GLFWcursorposfun Engine::Input::prevCursorPosCallback = nullptr;
+GLFWscrollfun Engine::Input::prevScrollCallback = nullptr;
 
 void Engine::Input::hideCursor() {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -8,22 +12,6 @@ void Engine::Input::hideCursor() {
 
 Engine::Input::Input(GLFWwindow *window) : window(window) {
     ASSERT("Window is nullptr", window != nullptr);
-    keyPressed = new bool[318];
-    keyJustPressed = new bool[318];
-    keyJustReleased = new bool[318];
-    mousePressed = new bool[8];
-    mouseJustPressed = new bool[8];
-    mouseJustReleased = new bool[8];
-    dragging = false;
-    stopDragging = false;
-    startDragging = false;
-
-    memset(keyPressed, 0, 318);
-    memset(keyJustPressed, 0, 318);
-    memset(keyJustReleased, 0, 318);
-    memset(mousePressed, 0, 8);
-    memset(mouseJustPressed, 0, 8);
-    memset(mouseJustReleased, 0, 8);
 }
 
 void Engine::Input::showCursor() {
@@ -35,17 +23,17 @@ glm::vec2 &Engine::Input::getCursorPosition() {
 }
 
 void Engine::Input::setCursorPosition(glm::vec2 position) {
-    ASSERT("Cursor position out of bounds", position.x > 0 && position.y > 0);
+    ASSERT("Cursor position out of bounds", position.x >= 0 && position.y >= 0);
     cursorPosition = position;
     glfwSetCursorPos(window, position.x, position.y);
 }
 
 bool Engine::Input::update() {
-    memset(mouseJustPressed, 0, 8);
-    memset(mouseJustReleased, 0, 8);
+    mouseJustPressed.fill(false);
+    mouseJustReleased.fill(false);
 
-    memset(keyJustPressed, 0, 318);
-    memset(keyJustReleased, 0, 318);
+    keyJustPressed.fill(false);
+    keyJustReleased.fill(false);
 
     scrollDelta = glm::vec2(0);
 
@@ -68,24 +56,32 @@ bool Engine::Input::update() {
     return true;
 }
 
-bool Engine::Input::isKeyPressed(int key) {
-    ASSERT("Key is invalid", key > 31 && key < 349);
-    return keyPressed[key - 32];
+bool Engine::Input::isValidKey(int key) {
+    return key >= KEY_OFFSET && key <= GLFW_KEY_LAST;
 }
 
-bool Engine::Input::isKeyJustPressed(int key) {
-    ASSERT("Key is invalid", key > 31 && key < 349);
-    return keyJustPressed[key - 32];
+bool Engine::Input::isValidButton(int button) {
+    return button >= 0 && button < MOUSE_BUTTON_COUNT;
 }
 
-bool Engine::Input::isMouseButtonPressed(int button) {
-    ASSERT("Button is invalid", button >= 0 && button < 8);
-    return mousePressed[button];
+bool Engine::Input::isKeyPressed(int key) const {
+    ASSERT("Key is invalid", isValidKey(key));
+    return isValidKey(key) && keyPressed[key - KEY_OFFSET];
 }
 
-bool Engine::Input::isMouseButtonJustPressed(int button) {
-    ASSERT("Button is invalid", button >= 0 && button < 8);
-    return mouseJustPressed[button];
+bool Engine::Input::isKeyJustPressed(int key) const {
+    ASSERT("Key is invalid", isValidKey(key));
+    return isValidKey(key) && keyJustPressed[key - KEY_OFFSET];
+}
+
+bool Engine::Input::isMouseButtonPressed(int button) const {
+    ASSERT("Button is invalid", isValidButton(button));
+    return isValidButton(button) && mousePressed[button];
+}
+
+bool Engine::Input::isMouseButtonJustPressed(int button) const {
+    ASSERT("Button is invalid", isValidButton(button));
+    return isValidButton(button) && mouseJustPressed[button];
 }
 
 void Engine::Input::setClipboard(const char *value) {
@@ -97,14 +93,14 @@ const char *Engine::Input::getClipboard() {
     return glfwGetClipboardString(window);
 }
 
-bool Engine::Input::isKeyJustReleased(int key) {
-    ASSERT("Key is invalid", key > 31 && key < 349);
-    return keyJustReleased[key - 32];
+bool Engine::Input::isKeyJustReleased(int key) const {
+    ASSERT("Key is invalid", isValidKey(key));
+    return isValidKey(key) && keyJustReleased[key - KEY_OFFSET];
 }
 
-bool Engine::Input::isMouseButtonJustReleased(int button) {
-    ASSERT("Button is invalid", button >= 0 && button < 8);
-    return mouseJustReleased[button];
+bool Engine::Input::isMouseButtonJustReleased(int button) const {
+    ASSERT("Button is invalid", isValidButton(button));
+    return isValidButton(button) && mouseJustReleased[button];
 }
 
 bool Engine::Input::isDragging() const {
@@ -123,6 +119,7 @@ glm::vec2 &Engine::Input::getDraggingStartPosition() {
     return draggingStartPosition;
 }
 
+// `key` is already offset by KEY_OFFSET here.
 void Engine::Input::key_callback(int key, int action) {
     if (action != GLFW_RELEASE) {
         Engine::Input::instance->keyJustPressed[key] = !Engine::Input::instance->keyPressed[key];
@@ -133,7 +130,7 @@ void Engine::Input::key_callback(int key, int action) {
 }
 
 void Engine::Input::mouse_callback(int button, int action) {
-    if (button >= 0 && button < 8) {
+    if (isValidButton(button)) {
         if (action != GLFW_RELEASE) {
             Engine::Input::instance->mouseJustPressed[button] = !Engine::Input::instance->mousePressed[button];
         } else {
@@ -151,19 +148,25 @@ void Engine::Input::cursor_callback(float xpos, float ypos) {
 
 void Engine::Input::registerCallbacks() {
     Engine::Input::instance = this;
-    glfwSetMouseButtonCallback(window, [](GLFWwindow *, int button, int action, int) {
-        mouse_callback(button, action);
+    // glfwSet*Callback returns the previously installed callback (ImGui's, if HUD::init ran first);
+    // keep it and forward, so both ImGui and Input receive events regardless of init order.
+    prevMouseButtonCallback = glfwSetMouseButtonCallback(window, [](GLFWwindow *w, int button, int action, int mods) {
+        if (prevMouseButtonCallback) prevMouseButtonCallback(w, button, action, mods);
+        if (instance) mouse_callback(button, action);
     });
-    glfwSetKeyCallback(window, [](GLFWwindow *, int key, int, int action, int) {
-        if (key >= 32 && key <= GLFW_KEY_LAST) {
-            key_callback(key - 32, action);
+    prevKeyCallback = glfwSetKeyCallback(window, [](GLFWwindow *w, int key, int scancode, int action, int mods) {
+        if (prevKeyCallback) prevKeyCallback(w, key, scancode, action, mods);
+        if (instance && isValidKey(key)) {
+            key_callback(key - KEY_OFFSET, action);
         }
     });
-    glfwSetCursorPosCallback(window, [](GLFWwindow *, double xpos, double ypos) {
-        cursor_callback((float) xpos, (float) ypos);
+    prevCursorPosCallback = glfwSetCursorPosCallback(window, [](GLFWwindow *w, double xpos, double ypos) {
+        if (prevCursorPosCallback) prevCursorPosCallback(w, xpos, ypos);
+        if (instance) cursor_callback((float) xpos, (float) ypos);
     });
-    glfwSetScrollCallback(window, [](GLFWwindow *, double xOffset, double yOffset) {
-        mouse_scroll_callback((float) xOffset, (float) yOffset);
+    prevScrollCallback = glfwSetScrollCallback(window, [](GLFWwindow *w, double xOffset, double yOffset) {
+        if (prevScrollCallback) prevScrollCallback(w, xOffset, yOffset);
+        if (instance) mouse_scroll_callback((float) xOffset, (float) yOffset);
     });
 }
 
@@ -185,12 +188,9 @@ void Engine::Input::setRawMode(bool value) {
 }
 
 Engine::Input::~Input() {
-    delete[] keyPressed;
-    delete[] mousePressed;
-
-    delete[] keyJustPressed;
-    delete[] mouseJustPressed;
-
-    delete[] keyJustReleased;
-    delete[] mouseJustReleased;
+    // The GLFW callbacks stay installed (the window may already be gone), but they must not
+    // touch a destroyed Input.
+    if (instance == this) {
+        instance = nullptr;
+    }
 }

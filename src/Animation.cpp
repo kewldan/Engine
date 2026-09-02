@@ -1,14 +1,17 @@
 #include "Animation.h"
+#include "Engine.h"
+#include <algorithm>
 
 Engine::Animation::Animation(double duration, float minValue, float maxValue) : duration(duration), minValue(minValue),
                                                                                 maxValue(maxValue) {
-
+    ASSERT("Animation duration must be >= 0", duration >= 0.0);
+    ASSERT("Animation min must be <= max", minValue <= maxValue);
 }
 
 void Engine::Animation::start(float value) {
     startValue = getValue();
     startTime = glfwGetTime();
-    targetValue = std::max(std::min(value, maxValue), minValue);
+    targetValue = std::clamp(value, minValue, maxValue);
 }
 
 float Engine::Animation::getValue() {

@@ -6,20 +6,22 @@
 
 #pragma once
 
-#ifdef _WIN32
-#include <Windows.h>
-#else
 #include <chrono>
-inline uint64_t GetTickCount64() {
-    return static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::steady_clock::now().time_since_epoch()).count());
-}
-#endif
+#include <cstdarg>
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
 #include <vector>
 #include <string>
 #include "IconsFontAwesome6.h"
 #include "imgui.h"
-#include "io/Filesystem.h"
+
+// Monotonic millisecond clock (replaces the Windows-only GetTickCount64 so this header
+// does not drag <Windows.h> into every translation unit that includes HUD.h).
+inline uint64_t ImGuiToastTickMs() {
+    return static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::steady_clock::now().time_since_epoch()).count());
+}
 
 #define NOTIFY_MAX_MSG_LENGTH            4096        // Max message content length
 #define NOTIFY_PADDING_X                20.f        // Bottom-left X padding
@@ -149,7 +151,7 @@ public:
 
     NOTIFY_INLINE auto get_content() -> char * { return this->content; };
 
-    NOTIFY_INLINE auto get_elapsed_time() const { return GetTickCount64() - this->creation_time; }
+    NOTIFY_INLINE auto get_elapsed_time() const { return ImGuiToastTickMs() - this->creation_time; }
 
     NOTIFY_INLINE auto get_phase() const -> const ImGuiToastPhase {
         const auto elapsed = get_elapsed_time();
@@ -187,7 +189,7 @@ public:
 
         this->type = type;
         this->dismiss_time = dismiss_time;
-        this->creation_time = GetTickCount64();
+        this->creation_time = ImGuiToastTickMs();
 
         memset(this->title, 0, sizeof(this->title));
         memset(this->content, 0, sizeof(this->content));
@@ -226,12 +228,13 @@ namespace ImGui {
 
         float height = 0.f;
 
-        for (auto i = 0; i < notifications.size(); i++) {
+        for (int i = 0; i < (int) notifications.size(); i++) {
             auto *current_toast = &notifications[i];
 
             // Remove toast if expired
             if (current_toast->get_phase() == ImGuiToastPhase_Expired) {
                 RemoveNotification(i);
+                i--; // the next toast now lives at this index
                 continue;
             }
 

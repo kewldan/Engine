@@ -2,6 +2,8 @@
 #include "stb_image.h"
 #include "Engine.h"
 #include "io/Filesystem.h"
+#include <cstdio>
+#include <cstdlib>
 
 Engine::Window::Window(int w, int h, const char *title) {
     ASSERT("Window width is below than 0", w > 0);
@@ -35,6 +37,9 @@ Engine::Window::Window(int w, int h, const char *title) {
     const char *version = reinterpret_cast<const char *>(glGetString(GL_VERSION));
     PLOGI << "OpenGL: " << version;
 
+    // The window was created with the requested size, but the framebuffer may differ (HiDPI).
+    glfwGetFramebufferSize(window, &width, &height);
+
     glDisable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
 }
@@ -59,7 +64,7 @@ Engine::Window::~Window() {
 void Engine::Window::setVsync(bool value) {
     if (value != vsync) {
         vsync = value;
-        glfwSwapInterval(vsync);
+        glfwSwapInterval(vsync ? 1 : 0);
     }
 }
 
@@ -84,15 +89,19 @@ void Engine::Window::setIcon(const char *path) {
     image.pixels = Engine::Texture::loadImage(path, &image.width, &image.height);
     if (image.pixels) {
         glfwSetWindowIcon(window, 1, &image);
+        stbi_image_free(image.pixels);
+    } else {
+        PLOGW << "Window icon [" << path << "] could not be loaded";
     }
-    stbi_image_free(image.pixels);
 }
 
 void Engine::Window::init() {
 #ifndef NDEBUG
     std::remove("latest.log");
     plog::init(plog::debug, "latest.log");
-    plog::get()->addAppender(new plog::ColorConsoleAppender<plog::FuncMessageFormatter>());
+    // plog keeps a pointer to the appender for the whole run, so it must outlive init().
+    static plog::ColorConsoleAppender<plog::FuncMessageFormatter> consoleAppender;
+    plog::get()->addAppender(&consoleAppender);
 #endif
     PLOGI << "ImGui version: " << ImGui::GetVersion();
     PLOGI << "Glfw version: " << glfwGetVersionString();

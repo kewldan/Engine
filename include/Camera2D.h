@@ -2,12 +2,13 @@
 
 #include "glm/ext.hpp"
 #include "Animation.h"
+#include "Window.h"
 
 namespace Engine {
     class Camera2D {
     private:
         glm::mat4 view{}, orthographic{};
-        Engine::Animation *zoom;
+        Engine::Animation zoom;
         glm::vec2 zoomAnchor{0.5f, 0.5f};
         float lastZoom{1.f};
         float Z_NEAR = 0.01f, Z_FAR = 10.f;
@@ -17,7 +18,6 @@ namespace Engine {
         glm::vec3 position{};
 
         explicit Camera2D(Window *window);
-        ~Camera2D();
 
         void update();
 

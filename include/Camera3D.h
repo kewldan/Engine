@@ -2,19 +2,21 @@
 
 #include "glm/ext.hpp"
 #include "Animation.h"
+#include "Window.h"
 
 namespace Engine {
     class Camera3D {
     private:
         glm::mat4 projection{}, view{}, viewRotation{};
-        Engine::Animation *fov;
+        Engine::Animation fov;
+
+        [[nodiscard]] float getAspect() const;
     public:
         Engine::Window *window;
         glm::vec3 position{};
         glm::vec2 rotation{};
 
         explicit Camera3D(Engine::Window *window);
-        ~Camera3D();
 
         glm::mat4 &getView();
 

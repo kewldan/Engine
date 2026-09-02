@@ -1,70 +1,64 @@
 #include "Shader.h"
 #include <cstdio>
+#include <string>
 
 #define SHADER_PART_VERTEX 1
 #define SHADER_PART_GEOMETRY 2
 #define SHADER_PART_FRAGMENT 4
 
-Engine::Shader::Shader(const char *filename) : filename(filename) {
+namespace {
+    bool shaderSourceExists(const std::string &path) {
+#ifndef NDEBUG
+        return Engine::Filesystem::exists(path.c_str());
+#else
+        return Engine::Filesystem::resourceExists(path.c_str());
+#endif
+    }
+}
+
+Engine::Shader::Shader(const char *filename) : filename(filename ? filename : "") {
     ASSERT("Filename is nullptr", filename != nullptr);
-    shaderParts = 0;
     program = glCreateProgram();
     ASSERT("Program invalid", program > 0);
 
-    uniforms = new Uniforms();
+    const std::string base = "data/shaders/" + this->filename;
 
-    vertex = -1;
-    geometry = -1;
-    fragment = -1;
-    blockIndex = 0;
-
-    char path[128];
-    std::snprintf(path, sizeof(path), "data/shaders/%s.vert", filename);
-
-#ifndef NDEBUG
-    if (Engine::Filesystem::exists(path)) {
-        vertex = loadShader(path, GL_VERTEX_SHADER, SHADER_PART_VERTEX);
+    std::string path = base + ".vert";
+    if (shaderSourceExists(path)) {
+        vertex = loadShader(path.c_str(), GL_VERTEX_SHADER, SHADER_PART_VERTEX);
     }
 
-    path[strlen(path) - 5] = 0;
-    strncat(path, ".frag", sizeof(path) - strlen(path) - 1);
-    if (Engine::Filesystem::exists(path)) {
-        fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
+    path = base + ".frag";
+    if (shaderSourceExists(path)) {
+        fragment = loadShader(path.c_str(), GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
     }
 
-    path[strlen(path) - 5] = 0;
-    strncat(path, ".geom", sizeof(path) - strlen(path) - 1);
-    if (Engine::Filesystem::exists(path)) {
-        geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
+    path = base + ".geom";
+    if (shaderSourceExists(path)) {
+        geometry = loadShader(path.c_str(), GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
     }
-#else
-    if (Engine::Filesystem::resourceExists(path)) {
-        vertex = loadShader(path, GL_VERTEX_SHADER, SHADER_PART_VERTEX);
-    }
-
-    path[strlen(path) - 5] = 0;
-    strncat(path, ".frag", sizeof(path) - strlen(path) - 1);
-    if (Engine::Filesystem::resourceExists(path)) {
-        fragment = loadShader(path, GL_FRAGMENT_SHADER, SHADER_PART_FRAGMENT);
-    }
-
-    path[strlen(path) - 5] = 0;
-    strncat(path, ".geom", sizeof(path) - strlen(path) - 1);
-    if (Engine::Filesystem::resourceExists(path)) {
-        geometry = loadShader(path, GL_GEOMETRY_SHADER, SHADER_PART_GEOMETRY);
-    }
-#endif
-    path[strlen(path) - 5] = 0;
 
     glLinkProgram(program);
 
+    int linked = 0;
+    glGetProgramiv(program, GL_LINK_STATUS, &linked);
+    if (linked != GL_TRUE) {
+        int length = 0;
+        glGetProgramiv(program, GL_INFO_LOG_LENGTH, &length);
+        std::string log(length > 0 ? length : 0, '\0');
+        if (length > 0) {
+            glGetProgramInfoLog(program, length, nullptr, log.data());
+        }
+        PLOGE << "Shader [" << this->filename << "] failed to link:\n" << log.c_str();
+    }
+
     if (shaderParts == 0) {
-        PLOGW << "Empty shader [" << filename << "] linked";
+        PLOGW << "Empty shader [" << this->filename << "] linked";
     } else {
-        PLOGI << "Shader [" << filename << "] linked ["
-              << ((shaderParts & SHADER_PART_VERTEX) != 0 ? 'V' : '\0')
-              << ((shaderParts & SHADER_PART_GEOMETRY) != 0 ? 'G' : '\0')
-              << ((shaderParts & SHADER_PART_FRAGMENT) != 0 ? 'F' : '\0')
+        PLOGI << "Shader [" << this->filename << "] linked ["
+              << ((shaderParts & SHADER_PART_VERTEX) != 0 ? "V" : "")
+              << ((shaderParts & SHADER_PART_GEOMETRY) != 0 ? "G" : "")
+              << ((shaderParts & SHADER_PART_FRAGMENT) != 0 ? "F" : "")
               << ']';
     }
 }
@@ -82,9 +76,10 @@ GLint Engine::Shader::getAttribLocation(const char *name) const {
     return value;
 }
 
-int Engine::Shader::loadShader(const char *path, int type, const char bitshift) {
+// Returns the shader object on success, 0 when the source is missing or fails to compile.
+GLuint Engine::Shader::loadShader(const char *path, int type, const char bitshift) {
     ASSERT("Path is nullptr", path != nullptr);
-    int shader = glCreateShader(type);
+    GLuint shader = glCreateShader(type);
     ASSERT("Shader invalid", shader > 0);
     const char *shader_source;
 #ifndef NDEBUG
@@ -94,7 +89,8 @@ int Engine::Shader::loadShader(const char *path, int type, const char bitshift) 
 #endif
     if (shader_source == nullptr) {
         PLOGE << "Shader source [" << path << "] could not be read";
-        return shader;
+        glDeleteShader(shader);
+        return 0;
     }
     glShaderSource(shader, 1, &shader_source, nullptr);
     glCompileShader(shader);
@@ -102,34 +98,35 @@ int Engine::Shader::loadShader(const char *path, int type, const char bitshift) 
 
     int length = 0;
     glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
-    if (length > 0) {
-        char *log = new char[length];
-        glGetShaderInfoLog(shader, length, nullptr, log);
-        PLOG_WARNING << "Shader log:\n" << log;
-        delete[] log;
+    if (length > 1) { // 1 == just the terminating NUL
+        std::string log(length, '\0');
+        glGetShaderInfoLog(shader, length, nullptr, log.data());
+        PLOG_WARNING << "Shader log:\n" << log.c_str();
     }
 
     int success = 0;
     glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
     if (success == GL_TRUE) {
         glAttachShader(program, shader);
-        shaderParts += bitshift;
-    } else {
-        PLOG_WARNING << "Shader found, but not attached";
+        shaderParts |= bitshift;
+        return shader;
     }
-    return shader;
+    PLOG_WARNING << "Shader [" << path << "] found, but not attached";
+    glDeleteShader(shader);
+    return 0;
 }
 
 GLint Engine::Shader::getUniformLocation(const char *name) const {
     ASSERT("Name is nullptr", name != nullptr);
-    if (uniforms->contains(name)) {
-        return (*uniforms)[name];
+    auto it = uniforms.find(std::string_view(name));
+    if (it != uniforms.end()) {
+        return it->second;
     }
     GLint value = glGetUniformLocation(program, name);
     if (value == -1) {
         PLOGE << "Uniform location in shader [" << filename << "] not found > " << name;
     }
-    (*uniforms)[name] = value;
+    uniforms.emplace(name, value);
     return value;
 }
 
@@ -138,7 +135,7 @@ void Engine::Shader::bind() const {
 }
 
 Engine::Shader::~Shader() {
-    PLOGW << "Shader [" << filename << "] was destroyed";
+    PLOGD << "Shader [" << filename << "] was destroyed";
     if ((shaderParts & SHADER_PART_VERTEX) != 0) {
         glDetachShader(program, vertex);
         glDeleteShader(vertex);
@@ -152,7 +149,6 @@ Engine::Shader::~Shader() {
         glDeleteShader(geometry);
     }
     glDeleteProgram(program);
-    delete uniforms;
 }
 
 void Engine::Shader::upload(const char *name, int value) const {
@@ -180,7 +176,7 @@ void Engine::Shader::upload(const char *name, glm::vec4 value) const {
     glUniform4fv(getUniformLocation(name), 1, glm::value_ptr(value));
 }
 
-void Engine::Shader::upload(const char *name, glm::mat4 value) const {
+void Engine::Shader::upload(const char *name, const glm::mat4 &value) const {
     ASSERT("Name is nullptr", name != nullptr);
     glUniformMatrix4fv(getUniformLocation(name), 1, false, glm::value_ptr(value));
 }
@@ -193,7 +189,7 @@ char *Engine::Shader::getElementName(const char *name, int index) {
     return n;
 }
 
-void Engine::Shader::uploadMat4(const char *name, float *value) const {
+void Engine::Shader::uploadMat4(const char *name, const float *value) const {
     ASSERT("Name is nullptr", name != nullptr);
     ASSERT("Value is nullptr", value != nullptr);
     glUniformMatrix4fv(getUniformLocation(name), 1, false, value);
@@ -201,22 +197,30 @@ void Engine::Shader::uploadMat4(const char *name, float *value) const {
 
 void Engine::Shader::bindUniformBlock(const char *name) {
     ASSERT("Name is nullptr", name != nullptr);
-    unsigned int bindingPoint = glGetUniformBlockIndex(program, name);
-    glUniformBlockBinding(program, bindingPoint, blockIndex++);
+    unsigned int blockIdx = glGetUniformBlockIndex(program, name);
+    if (blockIdx == GL_INVALID_INDEX) {
+        PLOGE << "Uniform block in shader [" << filename << "] not found > " << name;
+        return;
+    }
+    glUniformBlockBinding(program, blockIdx, blockIndex++);
 }
 
-Engine::UniformBlock::UniformBlock(unsigned int size) {
+Engine::UniformBlock::UniformBlock(unsigned int size, unsigned int bindingPoint) {
     ASSERT("Size must be > 0", size > 0);
     glGenBuffers(1, &block);
     glBindBuffer(GL_UNIFORM_BUFFER, block);
     glBufferData(GL_UNIFORM_BUFFER, size, nullptr, GL_STATIC_DRAW);
-    glBindBuffer(GL_UNIFORM_BUFFER, 0);
-    glBindBufferRange(GL_UNIFORM_BUFFER, 0, block, 0, size);
-    glBindBuffer(GL_UNIFORM_BUFFER, block);
-    offset = 0;
+    glBindBufferRange(GL_UNIFORM_BUFFER, bindingPoint, block, 0, size);
 }
 
-void Engine::UniformBlock::add(unsigned int size, void *value) {
+Engine::UniformBlock::~UniformBlock() {
+    glDeleteBuffers(1, &block);
+}
+
+void Engine::UniformBlock::add(unsigned int size, const void *value) {
+    ASSERT("Value is nullptr", value != nullptr);
+    // Re-bind: another buffer may have been bound to GL_UNIFORM_BUFFER since the constructor ran.
+    glBindBuffer(GL_UNIFORM_BUFFER, block);
     glBufferSubData(GL_UNIFORM_BUFFER, offset, size, value);
     offset += size;
 }

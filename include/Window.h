@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Texture.h"
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <plog/Log.h>
 #include "plog/Initializers/RollingFileInitializer.h"
@@ -22,7 +23,7 @@ namespace Engine {
 
     class Window {
     private:
-        GLFWwindow *window;
+        GLFWwindow *window{nullptr};
         bool resized{};
         bool vsync{};
     public:
@@ -35,6 +36,11 @@ namespace Engine {
         explicit Window(int w = 1280, int h = 720, const char *title = "Untitled");
 
         ~Window();
+
+        // Owns a GLFWwindow: copying would destroy it twice.
+        Window(const Window &) = delete;
+
+        Window &operator=(const Window &) = delete;
 
         void setVsync(bool value);
 

@@ -13,12 +13,18 @@ namespace Engine {
 
         ~Texture();
 
+        Texture(const Texture &) = delete;
+
+        Texture &operator=(const Texture &) = delete;
+
         void nearest() const;
 
         void bind() const;
 
         [[nodiscard]] unsigned int getTexture() const;
 
+        // Decodes an image to RGBA8; the result must be released with stbi_image_free().
+        // Returns nullptr on failure.
         static unsigned char *loadImage(const char *path, int *w, int *h);
     };
 }
