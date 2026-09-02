@@ -1,6 +1,6 @@
 {
   "name" : "engine",
-  "version-string" : "1.0.0",
+  "version-string" : "1.1.1",
   "builtin-baseline" : "6ced77403708cb188c43172c95b7d829c4518862",
   "dependencies" : [ {
     "name" : "glm",
