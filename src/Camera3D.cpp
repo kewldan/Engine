@@ -31,7 +31,8 @@ void Engine::Camera3D::update() {
 
 void Engine::Camera3D::setFov(float hFov) {
     ASSERT("Horizontal FOV <= 0", hFov > 0);
-    float vfovRad = 2.f * std::atan(std::tan(glm::radians(hFov) / 2) * getAspect());
+    // tan(v/2) = tan(h/2) / aspect: converting a horizontal FOV to the vertical one glm::perspective wants.
+    float vfovRad = 2.f * std::atan(std::tan(glm::radians(hFov) / 2) / getAspect());
     fov.start(vfovRad);
 }
 
